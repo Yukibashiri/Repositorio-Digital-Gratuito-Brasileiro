@@ -15,5 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('dashboard/', function () {
+    return view('login');
+});
 
-Route::resource('curso', 'CursoController');
+
+Route::resource('dashboard/curso', 'CursoController');
+Route::patch('dashboard/curso/{id}/edit', 'CursoController@update');
+Route::patch('dashboard/curso/{id}/delete', 'CursoController@destroy');
+
+Route::resource('dashboard/tags', 'TagsController');
+Route::patch('dashboard/tags/{id}/edit', 'TagsController@update');
+Route::patch('dashboard/tags/{id}/delete', 'TagsController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

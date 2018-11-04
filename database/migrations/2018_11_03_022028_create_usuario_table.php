@@ -17,11 +17,13 @@ class CreateUsuarioTable extends Migration {
 			$table->bigInteger('id', true);
 			$table->string('login', 50)->unique('login_UNIQUE');
 			$table->string('email')->unique('email_UNIQUE');
-			$table->string('senha');
+			$table->string('password');
 			$table->string('codinome', 100);
 			$table->bigInteger('informacao_pessoal_id')->index('fk_usuario_informacao_pessoal1_idx');
 			$table->integer('categoria_id')->index('fk_usuario_categoria1_idx');
 			$table->boolean('esta_ativo', 1)->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
 			$table->timestamps();
 			$table->softDeletes();
 		});

@@ -14,24 +14,26 @@ class UsuarioTableSeeder extends Seeder
         DB::table('usuario')->insert([
             'login' => 'yukibashiri',
             'email' => 'mariodamiaocaparroz@gmail.com',
-            'senha' => md5('123456'),
+            'password' =>  bcrypt('123456'),
             'codinome' => 'Administrador',
             'informacao_pessoal_id' => 1,
             'categoria_id' => 1,
             'esta_ativo' => 1,
             'created_at' => NOW(),
+            'email_verified_at' => NOW(),
         ]);
         $this->command->info('User: yukibashiri Created!');
 
         DB::table('usuario')->insert([
             'login' => 'rodrigomonteiro',
             'email' => 'rodrigomonteiro@gmail.com',
-            'senha' => md5('123456'),
+            'password' => bcrypt('123456'),
             'codinome' => 'Rodrigo Monteiro',
             'informacao_pessoal_id' => 2,
             'categoria_id' => 2,
             'esta_ativo' => 1,
             'created_at' => NOW(),
+            'email_verified_at' => NOW(),
         ]);
         $this->command->info('User: rodrigo Created!');
     }
