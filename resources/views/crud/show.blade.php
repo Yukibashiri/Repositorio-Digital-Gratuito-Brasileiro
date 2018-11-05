@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('title',$title_show .': '. $item_id)
 @section ('content')

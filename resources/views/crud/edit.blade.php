@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 @include('crud.forms.'.$form)
 @include('layouts.message')
 @section('title',$title_edit)
