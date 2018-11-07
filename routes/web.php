@@ -22,11 +22,21 @@ Route::get('dashboard/', function () {
 
 Route::resource('dashboard/curso', 'CursoController');
 Route::patch('dashboard/curso/{id}/edit', 'CursoController@update');
-Route::patch('dashboard/curso/{id}/delete', 'CursoController@destroy');
+
+Route::resource('dashboard/colecao', 'ColecaoController');
+Route::patch('dashboard/colecao/{id}/edit', 'ColecaoController@update');
 
 Route::resource('dashboard/tags', 'TagsController');
 Route::patch('dashboard/tags/{id}/edit', 'TagsController@update');
-Route::patch('dashboard/tags/{id}/delete', 'TagsController@destroy');
+
+Route::resource('dashboard/situacao', 'SituacaoController');
+Route::patch('dashboard/situacao/{id}/edit', 'SituacaoController@update');
+
+Route::resource('dashboard/papel', 'PapelController');
+Route::patch('dashboard/papel/{id}/edit', 'PapelController@update');
+
+Route::resource('dashboard/arquivo_extensao', 'ArquivoExtensaoController');
+Route::patch('dashboard/arquivo_extensao/{id}/edit', 'ArquivoExtensaoController@update');
 
 Auth::routes();
 

@@ -13,21 +13,21 @@ class ArquivoExtensaoTableSeeder extends Seeder
     {
         DB::table('arquivo_extensao')->insert([
             'nome' => 'PDF',
-            'ext' => '.pdf',
+            'slug' => 'pdf',
             'status' => 1,
         ]);
         $this->command->info('Ext: pdf Created!');
 
         DB::table('arquivo_extensao')->insert([
             'nome' => 'DOCX',
-            'ext' => '.docx',
+            'slug' => 'docx',
             'status' => 1,
         ]);
         $this->command->info('Ext: docx Created!');
 
         DB::table('arquivo_extensao')->insert([
             'nome' => 'DOC',
-            'ext' => '.doc',
+            'slug' => 'doc',
             'status' => 1,
         ]);
         $this->command->info('Ext: doc Created!');

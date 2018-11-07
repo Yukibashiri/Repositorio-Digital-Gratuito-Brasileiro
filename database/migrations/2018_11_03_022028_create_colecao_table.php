@@ -19,6 +19,8 @@ class CreateColecaoTable extends Migration {
 			$table->string('desc')->nullable();
 			$table->boolean('posicao')->nullable()->unique('posicao_UNIQUE');
 			$table->boolean('status', 1)->nullable();
+            $table->timestamps();
+            $table->softDeletes();
 		});
 	}
 

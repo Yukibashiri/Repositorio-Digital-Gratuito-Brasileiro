@@ -1,5 +1,5 @@
 @extends('layouts.main')
-
+@include('layouts.message')
 @section('head')
     <link href="{{ asset('css/dashboard/dataTables.bootstrap4.css') }}" rel="stylesheet">
 @stop
@@ -14,6 +14,7 @@
     <div class="card">
         <div class="card-body">
             <h2 class="card-title">{{$crud_name}}</h2>
+            @yield('alert_message')
             <div class="table-responsive">
                 <table id="crud_table_index" class="table table-striped table-bordered">
                     <thead>
@@ -31,9 +32,14 @@
                                     <td>{{$item->$field}}</td>
                                 @endforeach
                                 <td>
-                                    <a class="btn btn-primary" href="{{URL::to($route_path)}}/{{$item->id}}">Ver</a>
-                                    <a class="btn btn-warning" href="{{URL::to($route_path)}}/{{$item->id}}/edit">Editar</a>
-                                    <a class="btn btn-danger" href="{{URL::to($route_path)}}/{{$item->id}}/delete">Excluir</a>
+
+                                    <form method="POST" action="{{action($controller.'@destroy',$item->id)}}">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <a class="btn btn-primary" href="{{URL::to($route_path)}}/{{$item->id}}">Ver</a>
+                                        <a class="btn btn-warning" href="{{URL::to($route_path)}}/{{$item->id}}/edit">Editar</a>
+                                        <button class="btn btn-danger" >Excluir</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -84,7 +90,8 @@
                             "1": "Selecionado 1 linha"
                         }
                     }
-                }
+                },
+                "order": [[ {{isset($order_column)? $order_column : 1}}, {{isset($order_type)? $order_type : 'asc'}} ]]
             } );
         } );
     </script>

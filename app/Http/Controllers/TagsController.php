@@ -11,6 +11,7 @@ class TagsController extends Controller
 
     protected $title = 'Tags';
     protected $form = 'tags';
+    protected $controller = 'TagsController';
     protected $title_create = 'Novo item para tags';
     protected $title_edit = 'editar item para tags';
     protected $title_show = 'Detalhes do tags';
@@ -30,6 +31,7 @@ class TagsController extends Controller
         return view('crud.index',array('title' => $this->title,
             'route_path' => $this->route,
             'fields' => $this->fields,
+            'controller' => $this->controller,
             'fields_name' => $this->fields_name,
             'crud_name' => $this->plural_name,
             'itens' => $itens));
@@ -128,10 +130,9 @@ class TagsController extends Controller
     public function destroy($id)
     {
         $item = Tags::find($id);
-        $item->deleted_at = now();
-        if($item->save()){
-            return $this->index();
+        if($item->delete()){
+            return redirect($this->route)->with('tipo','success')->with('mensagem','Item removido com sucesso!');
         }
-        return $this->index();
+        return redirect($this->route)->with('tipo','danger')->with('mensagem','Não foi possivel completar a operção!');
     }
 }

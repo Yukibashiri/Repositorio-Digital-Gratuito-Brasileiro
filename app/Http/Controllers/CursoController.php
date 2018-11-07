@@ -10,6 +10,7 @@ class CursoController extends Controller
 {
     protected $title = 'Curso';
     protected $form = 'curso';
+    protected $controller = 'CursoController';
     protected $title_create = 'Novo item para curso';
     protected $title_edit = 'editar item para curso';
     protected $title_show = 'Detalhes do curso';
@@ -29,9 +30,11 @@ class CursoController extends Controller
         $cursos = Curso::all();
         return view('crud.index',array('title' => $this->title,
                                              'route_path' => $this->route,
+                                             'controller' => $this->controller,
                                              'fields' => $this->fields,
                                              'fields_name' => $this->fields_name,
                                              'crud_name' => $this->plural_name,
+                                             'form' => $this->form,
                                              'itens' => $cursos));
     }
 
@@ -132,10 +135,10 @@ class CursoController extends Controller
     public function destroy($id) // TO-DO
     {
         $item = Curso::find($id);
-        $item->deleted_at = now();
-        if($item->save()){
-            return $this->index();
+        if($item->delete()){
+            return redirect($this->route)->with('tipo','success')->with('mensagem','Item removido com sucesso!');
         }
-        return $this->index();
+        return redirect($this->route)->with('tipo','danger')->with('mensagem','Não foi possivel completar a operção!');
     }
+
 }

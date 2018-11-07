@@ -18,6 +18,8 @@ class CreatePapelTable extends Migration {
 			$table->string('nome', 45)->unique('nome_UNIQUE');
 			$table->boolean('posicao')->unique('posicao_UNIQUE');
 			$table->boolean('status', 1)->nullable();
+            $table->timestamps();
+            $table->softDeletes();
 		});
 	}
 
