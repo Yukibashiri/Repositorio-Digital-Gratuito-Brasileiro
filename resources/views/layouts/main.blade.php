@@ -218,19 +218,32 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                   
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/usuario') }}" aria-expanded="false"><i class="mdi mdi-account-card-details"></i><span class="hide-menu">Usuários</span></a></li>
+                   
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/item') }}" aria-expanded="false"><i class="mdi mdi-book-open-page-variant"></i><span class="hide-menu">Materiais científicos</span></a></li>
+                   
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/categoria') }}" aria-expanded="false"><i class="mdi mdi-worker"></i><span class="hide-menu">Cargos</span></a></li>
+                   
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/arquivo_extensao') }}" aria-expanded="false"><i class="mdi mdi-file-question"></i><span class="hide-menu">Extensões de Arquivo</span></a></li>
+                  
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/papel') }}" aria-expanded="false"><i class="mdi mdi-account-box-multiple"></i><span class="hide-menu">Papéis</span></a></li>
+                   
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/situacao') }}" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Situações</span></a></li>
+                   
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/colecao') }}" aria-expanded="false"><i class="mdi mdi-book-multiple-variant"></i><span class="hide-menu">Coleções</span></a></li>
+                   
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/tags') }}" aria-expanded="false"><i class="mdi mdi-tag-text-outline"></i><span class="hide-menu">Tags</span></a></li>
+                   
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-home-modern"></i><span class="hide-menu">Instituição </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item"><a href="{{ url('/dashboard/curso') }}" class="sidebar-link"><i class="mdi mdi-certificate"></i><span class="hide-menu"> Cursos </span></a></li>
-                        <li class="sidebar-item"><a href="{{ url('/dashboard/disciplina') }}" class="sidebar-link"><i class="mdi mdi-book-open"></i><span class="hide-menu"> Disciplinas </span></a></li>
-                    </ul>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            
+                            <li class="sidebar-item"><a href="{{ url('/dashboard/curso') }}" class="sidebar-link"><i class="mdi mdi-certificate"></i><span class="hide-menu"> Cursos </span></a></li>
+                           
+                            <li class="sidebar-item"><a href="{{ url('/dashboard/disciplina') }}" class="sidebar-link"><i class="mdi mdi-book-open-outline"></i><span class="hide-menu"> Disciplinas </span></a></li>
+                        </ul>
                     </li>
+                    
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/configuracao_sistema') }}" aria-expanded="false"><i class="mdi mdi-settings-box"></i><span class="hide-menu">Configurações</span></a></li>
 
                 </ul>
