@@ -48,6 +48,9 @@ Route::patch('dashboard/categoria/{id}/edit', 'CategoriaController@update');
 Route::resource('dashboard/disciplina', 'DisciplinaController');
 Route::patch('dashboard/disciplina/{id}/edit', 'DisciplinaController@update');
 
+Route::resource('dashboard/configuracao_sistema', 'GlobalConfigController');
+Route::patch('dashboard/configuracao_sistema/{id}/edit', 'GlobalConfigController@update');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -218,7 +218,7 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="charts.html" aria-expanded="false"><i class="mdi mdi-account-card-details"></i><span class="hide-menu">Usuários</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/usuario') }}" aria-expanded="false"><i class="mdi mdi-account-card-details"></i><span class="hide-menu">Usuários</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/categoria') }}" aria-expanded="false"><i class="mdi mdi-worker"></i><span class="hide-menu">Cargos</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/arquivo_extensao') }}" aria-expanded="false"><i class="mdi mdi-file-question"></i><span class="hide-menu">Extensões de Arquivo</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/papel') }}" aria-expanded="false"><i class="mdi mdi-account-box-multiple"></i><span class="hide-menu">Papéis</span></a></li>
@@ -231,7 +231,7 @@
                         <li class="sidebar-item"><a href="{{ url('/dashboard/disciplina') }}" class="sidebar-link"><i class="mdi mdi-book-open"></i><span class="hide-menu"> Disciplinas </span></a></li>
                     </ul>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="charts.html" aria-expanded="false"><i class="mdi mdi-settings-box"></i><span class="hide-menu">Configurações</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/dashboard/configuracao_sistema') }}" aria-expanded="false"><i class="mdi mdi-settings-box"></i><span class="hide-menu">Configurações</span></a></li>
 
                 </ul>
             </nav>
