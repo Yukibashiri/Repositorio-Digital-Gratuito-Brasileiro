@@ -15,6 +15,8 @@ class PapelTableSeeder extends Seeder
             'nome' => 'Autor',
             'posicao' => 0,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Autor Created!');
 
@@ -22,6 +24,8 @@ class PapelTableSeeder extends Seeder
             'nome' => 'Co-Autor',
             'posicao' => 1,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Co-Autor Created!');
 
@@ -29,6 +33,8 @@ class PapelTableSeeder extends Seeder
             'nome' => 'Orientador',
             'posicao' => 2,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Orientador Created!');
 
@@ -36,6 +42,8 @@ class PapelTableSeeder extends Seeder
             'nome' => 'Co-Orientador',
             'posicao' => 3,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Co-Orientador Created!');
     }

@@ -19,6 +19,8 @@ class CreateCategoriaTable extends Migration {
 			$table->string('desc');
 			$table->boolean('posicao')->unique('posicao_UNIQUE');
 			$table->boolean('status', 1)->nullable();
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

@@ -2,12 +2,17 @@
 
     <div class="form-group mb-3">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome" value="{{isset($item->nome) ? $item->nome : '' }}" placeholder="Digite o Nome do Curso..." required>
+        <input type="text" class="form-control" id="nome" name="nome" value="{{isset($item->nome) ? $item->nome : '' }}" placeholder="Digite o Nome do Cargo..." required>
     </div>
 
     <div class="form-group mb-3">
         <label for="desc">Descrição</label>
-        <input type="text" class="form-control" id="desc" name="desc" value="{{isset($item->desc) ? $item->desc : ''}}" placeholder="Digite a descrição do Curso...">
+        <input type="text" class="form-control" id="desc" name="desc" value="{{isset($item->desc) ? $item->desc : ''}}" placeholder="Digite a descrição do Cargo...">
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="desc">Posição/Ordem</label>
+        <input type="number" class="form-control" id="posicao" name="posicao" value="{{isset($item->posicao) ? $item->posicao : $last_position}}" placeholder="Digite a descrição do Cargo...">
     </div>
 
     <div class="form-group required">
@@ -18,6 +23,7 @@
             @endforeach
         </select>
     </div>
+
 
 
 @stop

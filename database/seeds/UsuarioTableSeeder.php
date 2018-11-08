@@ -19,8 +19,9 @@ class UsuarioTableSeeder extends Seeder
             'informacao_pessoal_id' => 1,
             'categoria_id' => 1,
             'esta_ativo' => 1,
-            'created_at' => NOW(),
-            'email_verified_at' => NOW(),
+            'created_at' => now(),
+            'updated_at' => now(),
+            'email_verified_at' => now(),
         ]);
         $this->command->info('User: yukibashiri Created!');
 
@@ -32,8 +33,9 @@ class UsuarioTableSeeder extends Seeder
             'informacao_pessoal_id' => 2,
             'categoria_id' => 2,
             'esta_ativo' => 1,
-            'created_at' => NOW(),
-            'email_verified_at' => NOW(),
+            'created_at' => now(),
+            'updated_at' => now(),
+            'email_verified_at' => now(),
         ]);
         $this->command->info('User: rodrigo Created!');
     }

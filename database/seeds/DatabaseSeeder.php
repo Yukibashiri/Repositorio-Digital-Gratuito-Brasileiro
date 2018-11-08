@@ -34,6 +34,9 @@ class DatabaseSeeder extends Seeder
                  // Insert das informações do material cientifico
                  CursoTableSeeder::class,
                  DisciplinaTableSeeder::class,
+
+                // Insert de palavras chaves
+                TagsTableSeeder::class,
              ]);
         endif;
     }

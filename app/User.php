@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+\Carbon\Carbon::setToStringFormat('d/m/Y H:i:s');
 
 class User extends Authenticatable
 {

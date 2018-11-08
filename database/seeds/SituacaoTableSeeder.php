@@ -16,6 +16,8 @@ class SituacaoTableSeeder extends Seeder
             'desc' => '',
             'posicao' => 0,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Situacao: aprovado Created!');
 
@@ -24,6 +26,8 @@ class SituacaoTableSeeder extends Seeder
             'desc' => '',
             'posicao' => 1,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Situacao: analise Created!');
 
@@ -32,6 +36,8 @@ class SituacaoTableSeeder extends Seeder
             'desc' => '',
             'posicao' => 2,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Situacao: rejeitado Created!');
 
@@ -40,6 +46,8 @@ class SituacaoTableSeeder extends Seeder
             'desc' => '',
             'posicao' => 3,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Situacao: ressalva Created!');
 
@@ -48,6 +56,8 @@ class SituacaoTableSeeder extends Seeder
             'desc' => '',
             'posicao' => 4,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Situacao: publicado Created!');
     }

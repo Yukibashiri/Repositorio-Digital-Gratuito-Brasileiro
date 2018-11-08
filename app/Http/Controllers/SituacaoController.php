@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Situacao;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class SituacaoController extends Controller
 {
@@ -29,7 +30,7 @@ class SituacaoController extends Controller
 
     public function index()
     {
-        $itens = Situacao::all()->sortBy("posicao");
+        $itens = Situacao::all();
         return view('crud.index',array('title' => $this->title,
             'route_path' => $this->route,
             'controller' => $this->controller,

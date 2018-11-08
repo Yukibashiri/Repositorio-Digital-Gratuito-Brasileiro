@@ -16,6 +16,8 @@ class ColecaoTableSeeder extends Seeder
             'desc' => 'Estudo de caso',
             'posicao' => 0,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Case Created!');
 
@@ -24,6 +26,8 @@ class ColecaoTableSeeder extends Seeder
             'desc' => '',
             'posicao' => 1,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Paper Created!');
 
@@ -32,6 +36,8 @@ class ColecaoTableSeeder extends Seeder
             'desc' => 'Trabalho de Conclusão de Curso',
             'posicao' => 2,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('TCC Created!');
 
@@ -40,6 +46,8 @@ class ColecaoTableSeeder extends Seeder
             'desc' => '',
             'posicao' => 3,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Monografia Created!');
 
@@ -48,6 +56,8 @@ class ColecaoTableSeeder extends Seeder
             'desc' => '',
             'posicao' => 4,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Dissertação Created!');
 
@@ -56,6 +66,8 @@ class ColecaoTableSeeder extends Seeder
             'desc' => '',
             'posicao' => 5,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Dissertação Created!');
 
@@ -64,6 +76,8 @@ class ColecaoTableSeeder extends Seeder
             'desc' => '',
             'posicao' => 6,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Artigo Created!');
     }

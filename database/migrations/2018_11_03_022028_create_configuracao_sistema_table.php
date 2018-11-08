@@ -19,6 +19,7 @@ class CreateConfiguracaoSistemaTable extends Migration {
 			$table->string('desc')->nullable();
 			$table->integer('valor')->nullable();
 			$table->boolean('status', 1)->nullable();
+			$table->timestamps();
 		});
 	}
 

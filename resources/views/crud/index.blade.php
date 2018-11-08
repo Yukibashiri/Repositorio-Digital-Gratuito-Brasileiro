@@ -91,7 +91,7 @@
                         }
                     }
                 },
-                "order": [[ {{isset($order_column)? $order_column : 1}}, {{isset($order_type)? $order_type : 'asc'}} ]]
+                "order": [[ {{isset($order_column)? $order_column : 1}}, '{{isset($order_type)? $order_type : 'ASC'}}' ]]
             } );
         } );
     </script>

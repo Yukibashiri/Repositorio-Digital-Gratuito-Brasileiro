@@ -16,8 +16,9 @@ class CursoController extends Controller
     protected $title_show = 'Detalhes do curso';
     protected $plural_name = 'Cursos';
     protected $route = 'dashboard/curso';
-    protected $fields_name = array('Nome','Descrição','Criado em', 'Atualizado em');
-    protected $fields = array('nome','desc','created_at','updated_at');
+    protected $fields_name = array('Nome','Descrição','Status','Criado em', 'Atualizado em');
+    protected $fields = array('nome','desc','status','created_at','updated_at');
+    protected $status = [ 0 => ['id' => '', 'nome' => 'Selecione'], 1 =>  ['id' => 1, 'nome' => 'Ativo'], 2 =>  ['id' => 0,'nome' => 'Inativo'] ];
 
 
     /**
@@ -46,7 +47,7 @@ class CursoController extends Controller
     public function create()
     {
         return view('crud.create', array('title' => $this->title,'title_create' => $this->title_create,
-            'route_path' => $this->route, 'form' => $this->form) );
+            'route_path' => $this->route, 'status' => $this->status, 'form' => $this->form) );
     }
 
     /**
@@ -60,11 +61,13 @@ class CursoController extends Controller
     {
         $this->validate($request,[
             'nome' => 'required|bail|unique:curso|min:5',
+            'status' => 'required',
             'desc' => 'min:5']);
 
         $item = new Curso();
         $item->nome = $request->input('nome');
         $item->desc = $request->input('desc');
+        $item->status = $request->input('status');
 
         if($item->save()){
             return redirect($this->route.'/create')->with('tipo','success')->with('mensagem','Item registrado com sucesso!');
@@ -99,7 +102,9 @@ class CursoController extends Controller
     {
         $item= Curso::find($id);
         return view('crud.edit',compact('item','id'),array('title_edit' => $this->title_edit,
-                                                                            'route_path' => $this->route, 'form' => $this->form));
+                                                                            'route_path' => $this->route,
+                                                                            'status' => $this->status,
+                                                                            'form' => $this->form));
     }
 
     /**
@@ -115,10 +120,13 @@ class CursoController extends Controller
         $item = Curso::find($id);
         $this->validate($request,[
             'nome' => 'required|bail|min:5',Rule::unique('curso')->ignore($id),
+            'status' => 'required',
             'desc' => 'min:5']);
 
         $item->nome = $request->input('nome');
         $item->desc = $request->input('desc');
+        $item->status = $request->input('status');
+        $item->updated_at = now();
 
         if($item->save()){
             return redirect($this->route.'/'.$id.'/edit')->with('tipo','success')->with('mensagem','Item atualizado com sucesso!');

@@ -16,6 +16,8 @@ class CategoriaTableSeeder extends Seeder
             'desc' => 'Gerente do sistema',
             'posicao' => 0,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Admin Created!');
 
@@ -24,6 +26,8 @@ class CategoriaTableSeeder extends Seeder
             'desc' => 'Professor da Instituição, responsável por gerenciar os trabalhos enviados',
             'posicao' => 1,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Professor Created!');
 
@@ -32,6 +36,8 @@ class CategoriaTableSeeder extends Seeder
             'desc' => 'Aluno da Instituição',
             'posicao' => 2,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Aluno Created!');
     }

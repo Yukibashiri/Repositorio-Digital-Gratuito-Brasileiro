@@ -16,7 +16,10 @@ class DisciplinaTableSeeder extends Seeder
             'nome' => 'Introdução a Programação',
             'desc' => 'Introdução a Programação',
             'created_at' => NOW(),
+            'status' => 1,
             'curso_id' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Disciplina: SI Created!');
 
@@ -24,7 +27,10 @@ class DisciplinaTableSeeder extends Seeder
             'nome' => 'Introdução a Direito Penal',
             'desc' => 'Introdução a Direito Penal',
             'created_at' => NOW(),
+            'status' => 1,
             'curso_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Disciplina: direito Created!');
     }

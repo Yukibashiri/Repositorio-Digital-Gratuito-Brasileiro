@@ -16,14 +16,18 @@ class ConfiguracaoTableSeeder extends Seeder
             'desc' => 'Determina o numero máximo de palavras chaves de um item',
             'valor' => 3,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('max_keywords Created!');
 
         DB::table('configuracao_sistema')->insert([
             'nome' => 'min_keywords',
             'desc' => 'Determina o numero minimo de palavras chaves de um item',
-            'valor' => 0,
+            'valor' => 1,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('min_keywords Created!');
 
@@ -32,6 +36,8 @@ class ConfiguracaoTableSeeder extends Seeder
             'desc' => 'Determina o numero máximo de autores de um item',
             'valor' => 3,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('max_authors Created!');
 
@@ -40,6 +46,8 @@ class ConfiguracaoTableSeeder extends Seeder
             'desc' => 'Determina o numero minimo de autores de um item',
             'valor' => 1,
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('min_authors Created!');
 

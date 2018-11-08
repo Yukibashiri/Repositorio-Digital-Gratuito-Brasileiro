@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\GlobalConfig;
 use Illuminate\Http\Request;
 
+
 class GlobalConfigController extends Controller
 {
     /**

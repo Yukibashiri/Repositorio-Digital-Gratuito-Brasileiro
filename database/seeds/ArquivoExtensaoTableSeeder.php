@@ -15,6 +15,8 @@ class ArquivoExtensaoTableSeeder extends Seeder
             'nome' => 'PDF',
             'slug' => 'pdf',
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Ext: pdf Created!');
 
@@ -22,6 +24,8 @@ class ArquivoExtensaoTableSeeder extends Seeder
             'nome' => 'DOCX',
             'slug' => 'docx',
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Ext: docx Created!');
 
@@ -29,6 +33,8 @@ class ArquivoExtensaoTableSeeder extends Seeder
             'nome' => 'DOC',
             'slug' => 'doc',
             'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         $this->command->info('Ext: doc Created!');
     }

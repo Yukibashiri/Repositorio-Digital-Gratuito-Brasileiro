@@ -17,8 +17,7 @@ class CreateInformacaoPessoalTable extends Migration {
 			$table->bigInteger('id', true);
 			$table->string('nome', 150);
 			$table->string('sobrenome', 100);
-			$table->dateTime('nascimento');
-			$table->dateTime('updated_at')->nullable();
+			$table->timestamps();
 		});
 	}
 

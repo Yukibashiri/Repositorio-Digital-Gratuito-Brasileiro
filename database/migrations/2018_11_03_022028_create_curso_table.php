@@ -17,6 +17,7 @@ class CreateCursoTable extends Migration {
 			$table->integer('id', true);
 			$table->string('nome', 45)->unique('nome_UNIQUE');
 			$table->string('desc');
+            $table->boolean('status', 1)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
