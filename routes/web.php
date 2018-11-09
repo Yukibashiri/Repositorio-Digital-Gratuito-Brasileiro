@@ -19,6 +19,11 @@ Route::get('dashboard/', function () {
     return view('layouts.main');
 });
 
+Route::get('painel/', function () {
+    return view('layouts.template');
+});
+
+
 Route::get('cadastrar/', function () {
     return view('crud.forms.usuario');
 });
