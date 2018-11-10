@@ -16,10 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard/', function () {
-    return view('layouts.main');
-});
-
-Route::get('painel/', function () {
     return view('layouts.template');
 });
 
@@ -47,8 +43,8 @@ Route::patch('dashboard/papel/{id}/edit', 'PapelController@update');
 Route::resource('dashboard/arquivo_extensao', 'ArquivoExtensaoController');
 Route::patch('dashboard/arquivo_extensao/{id}/edit', 'ArquivoExtensaoController@update');
 
-Route::resource('dashboard/categoria', 'CategoriaController');
-Route::patch('dashboard/categoria/{id}/edit', 'CategoriaController@update');
+Route::resource('dashboard/cargos', 'CategoriaController');
+Route::patch('dashboard/cargos/{id}/edit', 'CategoriaController@update');
 
 Route::resource('dashboard/disciplina', 'DisciplinaController');
 Route::patch('dashboard/disciplina/{id}/edit', 'DisciplinaController@update');

@@ -123,9 +123,9 @@
 <div class="flex-center position-ref full-height">
     @if (Route::has('login'))
         <div class="top-right links">
-            <a href="{{ url('/artigos') }}">Artigos</a>
+            <a href="{{ url('/dashboard') }}">Dashboard</a>
             @auth
-                <a href="{{ url('/home') }}">Inicio</a>
+                <a href="{{ url('/dashboard') }}">Inicio</a>
             @else
                 <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('register') }}">Cadastrar</a>

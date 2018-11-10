@@ -15,7 +15,10 @@ mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
 
 mix.styles([
-	'public/dist/css/style.min.css'
+	'public/dist/css/style.min.css',
+    'public/assets/node_modules/wizard/steps.css',
+    'public/assets/node_modules/sweetalert/sweetalert.css',
+    'public/assets/node_modules/DataTables/datatables.css'
 ], 'public/assets/css/rddb.css');
 	
 mix.scripts([
@@ -25,7 +28,12 @@ mix.scripts([
     'public/dist/js/perfect-scrollbar.jquery.min.js',
     'public/dist/js/waves.js',
     'public/dist/js/sidebarmenu.js',
-    'public/dist/js/custom.min.js'
+    'public/dist/js/custom.min.js',
+    'public/assets/node_modules/moment/moment.js',
+    'public/assets/node_modules/wizard/jquery.steps.min.js',
+    'public/assets/node_modules/wizard/jquery.validate.min.js',
+    'public/assets/node_modules/sweetalert/sweetalert.min.js',
+    'public/assets/node_modules/DataTables/datatables.min.js'
 	], 'public/assets/js/rddb.js');
 
 mix.version('public/assets/css/rddb.css');

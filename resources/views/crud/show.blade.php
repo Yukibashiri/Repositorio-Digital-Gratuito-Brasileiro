@@ -1,4 +1,8 @@
-@extends('layouts.main')
+@extends('layouts.template')
+
+@section('button_create')
+    <button type="button" class="btn btn-info d-none d-lg-block m-l-15" onclick="window.location.href='{{ url()->previous() }}'"><i class="fa fa-chevron-circle-left" ></i> Voltar</button>
+@stop
 
 @section('title',$title_show .': '. $item_id)
 @section ('content')
@@ -15,7 +19,4 @@
             @endforeach
         </tr>
     </table>
-    <div class="container" align="right">
-        <a class="btn btn-primary" href="javascript:history.go(-1)">Voltar</a>
-    </div>
 @stop

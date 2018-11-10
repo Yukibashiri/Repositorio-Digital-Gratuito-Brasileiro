@@ -1,14 +1,16 @@
-@extends('layouts.main')
+@extends('layouts.template')
 @include('layouts.message')
-@section('head')
-    <link href="{{ asset('css/dashboard/dataTables.bootstrap4.css') }}" rel="stylesheet">
-@stop
+
 @section('title',$title)
+
+@section('button_create')
+    <button type="button" class="btn btn-info d-none d-lg-block m-l-15" onclick="window.location.href='{{URL::to($route_path)}}/create'"><i class="fa fa-plus-circle" ></i> Criar Novo</button>
+@stop
 @section ('content')
 
     <div class="container" align="right">
-        <a class="btn btn-primary" href="javascript:history.go(-1)">Voltar</a>
-        <a class="btn btn-primary" href="{{URL::to($route_path)}}/create">Criar</a>
+        {{--<a class="btn btn-primary" href="javascript:history.go(-1)">Voltar</a>--}}
+        {{--<a class="btn btn-primary" href="{{URL::to($route_path)}}/create">Criar</a>--}}
     </div>
 
     <div class="card">
@@ -52,7 +54,6 @@
 @stop
 
 @section('script')
-    <script src="{{ asset('libs/DataTables/datatables.min.js') }}"></script>
     <script>
         /****************************************
          *       Config Table            *

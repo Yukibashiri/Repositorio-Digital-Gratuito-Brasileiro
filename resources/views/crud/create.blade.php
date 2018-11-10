@@ -1,7 +1,13 @@
-@extends('layouts.main')
+@extends('layouts.template')
 @include('crud.forms.'.$form)
 @include('layouts.message')
 @section('title',$title_create)
+
+@section('button_create')
+    <button type="button" class="btn btn-info d-none d-lg-block m-l-15" onclick="window.location.href='{{ url()->previous() }}'"><i class="fa fa-chevron-circle-left" ></i> Voltar</button>
+@stop
+
+
 @section('content')
     <h1 class="mb-3">Novo item para {{$title}}</h1>
     @yield('alert_message')
@@ -10,7 +16,4 @@
         @yield('form_field')
         <button type="submit" class="btn btn-primary">Cadastrar Item</button>
     </form>
-    <div class="container" align="right">
-        <a class="btn btn-primary" href="{{ url('/'.$route_path) }}">Voltar</a>
-    </div>
 @stop
