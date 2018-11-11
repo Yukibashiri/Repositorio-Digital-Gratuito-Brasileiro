@@ -356,32 +356,26 @@
                                         Cursos
                                     </a>
                                 </li>
-                                <
+
                                 <li>
                                     <a href="{{ url('/dashboard/disciplina') }}" >
-                                        <i class="mdi mdi-book-open-outline"</i>
+                                        <i class="mdi mdi-book-open-outline"> </i>
                                            Disciplinas
                                     </a>
                                 </li>
                             </ul>
 
                         </li>
-
-
                         <li> <a class="waves-effect waves-dark" href="{{ url('/dashboard/configuracao_sistema') }}"><i class="mdi mdi-settings-box"></i><span class="hide-menu">Configurações</span></a>
                         </li>
 
-                        {{--<li> <a class="has-arrow waves-effect waves-dark" href="{{ url('/dashboard/configuracao_sistema') }}" aria-expanded="false"><i class="ti-align-left"></i><span class="hide-menu">Configurações</span></a>--}}
-                            {{--<ul aria-expanded="false" class="collapse">--}}
-                                {{--<li><a href="javascript:void(0)">item 1.1</a></li>--}}
-                                {{--<li><a href="javascript:void(0)">item 1.2</a></li>--}}
-                                {{--<li><a href="javascript:void(0)">item 1.3</a></li>--}}
-                            {{--</ul>--}}
-                        {{--</li>--}}
-                        <li class="nav-small-cap">--- SUPORTE</li>
-                        <li> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="far fa-circle text-danger"></i><span class="hide-menu">Documentação</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="far fa-circle text-success"></i><span class="hide-menu">Log Out</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="far fa-circle text-info"></i><span class="hide-menu">FAQs</span></a></li>
+                        <li> <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="ti-align-left"></i><span class="hide-menu">Suporte</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="far fa-circle text-success"></i><span class="hide-menu"> Documentação</span></a></li>
+                                <li> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="far fa-circle text-info"></i><span class="hide-menu"> FAQs</span></a></li>
+                                <li> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="far fa-circle text-danger"></i><span class="hide-menu"> Log Out</span></a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -464,6 +458,7 @@
                                 <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme working">4</a></li>
                                 <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
                                 <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
+                                <li><a href="javascript:void(0)" data-skin="skin-undb" class="undb-theme">6</a></li>
                                 <li class="d-block m-t-30"><b>Menu lateral escuro</b></li>
                                 <li><a href="javascript:void(0)" data-skin="skin-default-dark" class="default-dark-theme ">7</a></li>
                                 <li><a href="javascript:void(0)" data-skin="skin-green-dark" class="green-dark-theme">8</a></li>
@@ -471,6 +466,7 @@
                                 <li><a href="javascript:void(0)" data-skin="skin-blue-dark" class="blue-dark-theme">10</a></li>
                                 <li><a href="javascript:void(0)" data-skin="skin-purple-dark" class="purple-dark-theme">11</a></li>
                                 <li><a href="javascript:void(0)" data-skin="skin-megna-dark" class="megna-dark-theme ">12</a></li>
+                                <li><a href="javascript:void(0)" data-skin="skin-undb-dark" class="undb-dark-theme-theme">6</a></li>
                             </ul>
                         </div>
                     </div>

@@ -25,6 +25,9 @@ Route::get('cadastrar/', function () {
 });
 
 
+
+
+
 Route::resource('dashboard/curso', 'CursoController');
 Route::patch('dashboard/curso/{id}/edit', 'CursoController@update');
 

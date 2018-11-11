@@ -9,6 +9,7 @@
 
 
 @section('content')
+   <div class="container">
     <h1 class="mb-3">Atualizar item </h1>
     @yield('alert_message')
     <form method="POST" enctype="multipart/form-data" action="{{url($route_path.'/'.$id.'/edit')}}">
@@ -17,4 +18,5 @@
         @yield('form_field')
         <button type="submit" class="btn btn-primary">Atualizar Item</button>
     </form>
+   </div>
 @stop

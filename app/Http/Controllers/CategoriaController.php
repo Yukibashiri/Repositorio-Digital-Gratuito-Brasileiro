@@ -15,7 +15,7 @@ class CategoriaController extends Controller
      */
 
     protected $title = 'Cargos';
-    protected $form = 'categoria';
+    protected $form = 'cargos';
     protected $controller = 'CategoriaController';
     protected $title_create = 'Novo item para Cargos';
     protected $title_edit = 'Editar item para Cargos';
@@ -23,7 +23,7 @@ class CategoriaController extends Controller
     protected $plural_name = 'Cargos';
     protected $order_column = 3;
     protected $order_type = 'ASC';
-    protected $route = 'dashboard/categoria';
+    protected $route = 'dashboard/cargos';
     protected $fields_name = array('Nome','Descrição','Posição/Ordem', 'Status', 'Criado em', 'Atualizado em' );
     protected $fields = array('nome','desc','posicao','status','created_at','updated_at');
     protected $status = [ 0 => ['id' => '', 'nome' => 'Selecione'], 1 =>  ['id' => 1, 'nome' => 'Ativo'], 2 =>  ['id' => 0,'nome' => 'Inativo'] ];
