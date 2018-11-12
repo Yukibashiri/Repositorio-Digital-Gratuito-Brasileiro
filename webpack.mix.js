@@ -33,7 +33,8 @@ mix.scripts([
     'public/assets/node_modules/wizard/jquery.steps.min.js',
     'public/assets/node_modules/wizard/jquery.validate.min.js',
     'public/assets/node_modules/sweetalert/sweetalert.min.js',
-    'public/assets/node_modules/DataTables/datatables.min.js'
+    'public/assets/node_modules/DataTables/datatables.min.js',
+    'public/js/user.js'
 	], 'public/assets/js/rddb.js');
 
 mix.version('public/assets/css/rddb.css');

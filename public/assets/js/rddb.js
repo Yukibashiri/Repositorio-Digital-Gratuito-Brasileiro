@@ -8257,3 +8257,85 @@ renderer:"bootstrap"});b.extend(f.ext.classes,{sWrapper:"dataTables_wrapper dt-b
 {"class":t.sPageButton+" "+g,id:0===r&&"string"===typeof c?a.sTableId+"_"+c:null}).append(b("<a>",{href:"#","aria-controls":a.sTableId,"aria-label":u[c],"data-dt-idx":p,tabindex:a.iTabIndex,"class":"page-link"}).html(e)).appendTo(d),a.oApi._fnBindAction(i,{action:c},m),p++)}},i;try{i=b(h).find(d.activeElement).data("dt-idx")}catch(v){}q(b(h).empty().html('<ul class="pagination"/>').children("ul"),s);i!==m&&b(h).find("[data-dt-idx="+i+"]").focus()};return f});
 
 
+
+
+
+var form = $(".validation-wizard").show();
+
+$(".validation-wizard").steps({
+    headerTag: "h6",
+    bodyTag: "section",
+    transitionEffect: "fade",
+    titleTemplate: '<span class="step">#index#</span> #title#',
+    labels: {
+        finish: "Cadastrar"
+    },
+
+    onStepChanging: function (event, currentIndex, newIndex)
+    {
+        // Allways allow previous action even if the current form is not valid!
+        if (currentIndex > newIndex)
+        {
+            return true;
+        }
+        // Forbid next action on "Warning" step if the user is to young
+
+        // Needed in some cases if the user went back (clean up)
+        if (currentIndex < newIndex)
+        {
+            // To remove error styles
+            form.find(".body:eq(" + newIndex + ") label.error").remove();
+            form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+        }
+        form.validate().settings.ignore = ":disabled,:hidden";
+        return form.valid();
+    },
+
+    onFinishing: function (event, currentIndex) {
+        return form.validate().settings.ignore = ":disabled", form.valid()
+    },
+    onFinished: function (event, currentIndex) {
+        form.submit();
+        swal("Cadastro realizado!", "O cadastro foi realizado com sucesso!");
+    }
+}), $(".validation-wizard").validate({
+    ignore: "input[type=hidden]",
+    errorClass: "text-danger",
+    successClass: "text-success",
+    highlight: function (element, errorClass) {
+        $(element).removeClass(errorClass)
+    },
+    unhighlight: function (element, errorClass) {
+        $(element).removeClass(errorClass)
+    },
+    errorPlacement: function (error, element) {
+        error.insertAfter(element)
+    },
+    rules: {
+        email: {
+            email: !0,required: true, email: true
+        },
+        password: {
+            required: true, minlength: 6
+        },
+        confirmpassword: {
+            equalTo: "#password"
+        },
+        name: { required: true, number: false, minlength: 1 },
+        nickname: { required: true, number: false, minlength: 1 },
+        login: { required: true, minlength: 4 },
+        lastname: { required: true, number: false, minlength: 1 }
+    },
+    messages: {
+        name: "Informe um nome",
+        login: "Informe um usuário válido",
+        lastname: "Informe um sobrenome",
+        email: "Informe um e-mail",
+        nickname: "Informe como quer ser chamado pelo sistema",
+        password: "Deve conter no minimo 6 digitos",
+        confirmpassword: "Deve ser igual a senha digitada"
+    }
+})
+// onStepChanging: function (event, currentIndex, newIndex) {
+//     return currentIndex > newIndex || (currentIndex < newIndex && (form.find(".body:eq(" + newIndex + ") label.error").remove(), form.find(".body:eq(" + newIndex + ") .error").removeClass("error")), form.validate().settings.ignore = ":disabled,:hidden", form.valid())
+// },
