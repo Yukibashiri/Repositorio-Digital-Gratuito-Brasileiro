@@ -18,8 +18,8 @@ class UsuarioController extends Controller
     protected $title_show = 'Detalhes do curso';
     protected $plural_name = 'Usuarios';
     protected $route = 'dashboard/usuario';
-    protected $fields_name = array('Nome','Descrição','Status','Criado em', 'Atualizado em');
-    protected $fields = array('nome','desc','status','created_at','updated_at');
+   protected $fields_name = array('Nome','Sobrenome','Usuário','Email', 'Status','Cargo', ,'Apelido', 'Criado em', 'Atualizado em','Email verificado em' );
+    protected $fields = array('nome','sobrenome','login', 'email','esta_ativo','categoria_id','codinome', 'created_at','updated_at', 'email_verified');
     protected $status = [ 0 => ['id' => '', 'nome' => 'Selecione'], 1 =>  ['id' => 1, 'nome' => 'Ativo'], 2 =>  ['id' => 0,'nome' => 'Inativo'] ];
     protected $crud = true;
 
@@ -30,7 +30,21 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return view('crud.forms.usuario');
+        $itens = DB::table('usuario')
+            ->join('informacao_pessoal', 'usuairo.informacao_pessoal_id', '=', 'informacao_pessoal.id')
+            ->where('1 = 1')
+            ->select( 'nome, sobrenome, login, email, codinome, usuario.created_at, categoria_id, usuario.updated_at, usuario.ativo')
+            ->get();
+        return view('crud.index',array('title' => $this->title,
+            'route_path' => $this->route,
+            'controller' => $this->controller,
+            'fields' => $this->fields,
+            '$this->order_column' => $this->order_column,
+            '$this->order_type' => $this->order_type,
+            'fields_name' => $this->fields_name,
+            'crud_name' => $this->plural_name,
+            'form' => $this->form,
+            'itens' => $itens));
     }
 
     /**
@@ -40,8 +54,9 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('crud.forms.usuario', array('title' => $this->title,'title_create' => $this->title_create,
-            'route_path' => $this->route, 'form' => $this->form) );
+        return view('crud.create', array('title' => $this->title,'title_create' => $this->title_create,
+            'route_path' => $this->route,'status' => $this->status,
+            'last_position' => (new Situacao)->nextPosition(),'form' => $this->form) );
     }
 
     /**
@@ -96,9 +111,19 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function show(Usuario $usuario)
+    public function show($id)
     {
-        //
+        $itens = DB::table('usuario')
+            ->join('informacao_pessoal', 'usuairo.informacao_pessoal_id', '=', 'informacao_pessoal.id')
+            ->where('1 = 1')
+            ->where('usuario.id = '.$id)
+            ->select( 'nome, sobrenome, login, email, codinome, usuario.created_at, categoria_id, usuario.updated_at, usuario.ativo')
+            ->get();
+        return view('crud.show',array('item' => $item,
+            'item_id' => $item['nome'],
+            'title_show' => $this->title_show,
+            'fields' => $this->fields,
+            'fields_name' => $this->fields_name));
     }
 
     /**
@@ -109,7 +134,14 @@ class UsuarioController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        //
+        $itens = DB::table('usuario')
+            ->join('informacao_pessoal', 'usuairo.informacao_pessoal_id', '=', 'informacao_pessoal.id')
+            ->where('1 = 1')
+            ->where('usuario.id = '.$id)
+            ->select( 'nome, sobrenome, login, email, codinome, usuario.created_at, categoria_id, usuario.updated_at, usuario.ativo')
+            ->get();
+        return view('crud.edit',compact('item','id'),array('title_edit' => $this->title_edit,
+            'route_path' => $this->route,'status' => $this->status, 'form' => $this->form));
     }
 
     /**
@@ -130,8 +162,12 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
-        //
+        $item = Usuario::find($id);
+        if($item->delete()){
+            return redirect($this->route)->with('tipo','success')->with('mensagem','Item removido com sucesso!');
+        }
+        return redirect($this->route)->with('tipo','danger')->with('mensagem','Não foi possivel completar a operção!');
     }
 }
