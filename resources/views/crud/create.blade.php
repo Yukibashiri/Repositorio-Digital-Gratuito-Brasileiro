@@ -4,7 +4,7 @@
 @section('title',$title_create)
 
 @section('button_create')
-    <button type="button" class="btn btn-info d-none d-lg-block m-l-15" onclick="window.location.href='{{ url()->previous() }}'"><i class="fa fa-chevron-circle-left" ></i> Voltar</button>
+    <button type="button" class="btn btn-info d-none d-lg-block m-l-15" onclick="window.location.href='{{URL::to($route_path)}}'"><i class="fa fa-chevron-circle-left" ></i> Voltar</button>
 @stop
 
 

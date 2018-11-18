@@ -1,5 +1,4 @@
 @extends('layouts.template')
-@include('layouts.message')
 
 @section('title',$title)
 
@@ -16,7 +15,6 @@
     <div class="card">
         <div class="card-body">
             <h2 class="card-title">{{$crud_name}}</h2>
-            @yield('alert_message')
             <div class="table-responsive">
                 <table id="crud_table_index" class="table table-striped table-bordered">
                     <thead>
@@ -38,9 +36,13 @@
                                     <form method="POST" action="{{action($controller.'@destroy',$item->id)}}">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <a class="btn btn-primary" href="{{URL::to($route_path)}}/{{$item->id}}">Ver</a>
-                                        <a class="btn btn-warning" href="{{URL::to($route_path)}}/{{$item->id}}/edit">Editar</a>
-                                        <button class="btn btn-danger" >Excluir</button>
+
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a href="{{URL::to($route_path)}}/{{$item->id}}" class="btn btn-info"><i class="fas fa-exclamation-circle"></i></a>
+                                            <a href="{{URL::to($route_path)}}/{{$item->id}}/edit" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                                            <button type="button" class="btn btn-info"><i class=" fas fa-ban"></i></button>
+                                        </div>
+
                                     </form>
                                 </td>
                             </tr>

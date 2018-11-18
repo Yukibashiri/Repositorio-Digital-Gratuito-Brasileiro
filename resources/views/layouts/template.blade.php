@@ -1,4 +1,4 @@
-@include('layouts.message')
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -320,11 +320,10 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-
                         <li> <a class="waves-effect waves-dark" href="{{ url('/dashboard/') }}"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
 
-                        <li> <a class="waves-effect waves-dark" href="{{ url('/dashboard/usuario') }}"><i class="mdi mdi-account-card-details"></i><span class="hide-menu">Usuários (OFF)</span></a>
+                        <li> <a class="waves-effect waves-dark" href="{{ url('/dashboard/usuario') }}"><i class="mdi mdi-account-card-details"></i><span class="hide-menu">Usuários</span></a>
                         </li>
 
                         <li> <a class="waves-effect waves-dark" href="{{ url('/dashboard/item') }}"><i class="mdi mdi-book-open-page-variant"></i><span class="hide-menu">Materiais científicos(OFF)</span></a>
@@ -431,7 +430,6 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
-                        @yield('alert_message')
                         <div class="card">
                             <div class="card-body">
                                 @yield('content')

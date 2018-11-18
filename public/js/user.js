@@ -8,7 +8,9 @@ $(".validation-wizard").steps({
     transitionEffect: "fade",
     titleTemplate: '<span class="step">#index#</span> #title#',
     labels: {
-        finish: "Cadastrar"
+        finish: "Cadastrar",
+        next: "Avançar",
+        previous: "Voltar"
     },
 
     onStepChanging: function (event, currentIndex, newIndex)
@@ -27,6 +29,11 @@ $(".validation-wizard").steps({
             form.find(".body:eq(" + newIndex + ") label.error").remove();
             form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
         }
+        if(currentIndex == 1)
+        {
+            $("#wizard .actions a[href='#previous']").hide();
+        }
+
         form.validate().settings.ignore = ":disabled,:hidden";
         return form.valid();
     },
@@ -35,8 +42,9 @@ $(".validation-wizard").steps({
         return form.validate().settings.ignore = ":disabled", form.valid()
     },
     onFinished: function (event, currentIndex) {
-        form.submit();
-        swal("Cadastro realizado!", "O cadastro foi realizado com sucesso!");
+        $.post('link_to your_php_file.php', $('#form-summary').serialize(), function( data ) {
+            alert( "Data Loaded: " + data ); // Display information from link_to your_php_file.php
+        });
     }
 }), $(".validation-wizard").validate({
     ignore: "input[type=hidden]",
@@ -61,10 +69,10 @@ $(".validation-wizard").steps({
         confirmpassword: {
             equalTo: "#password"
         },
-        name: { required: true, number: false, minlength: 1 },
-        nickname: { required: true, number: false, minlength: 1 },
+        name: { required: true, number: false, minlength: 2 },
+        nickname: { required: true, number: false, minlength: 4 },
         login: { required: true, minlength: 4 },
-        lastname: { required: true, number: false, minlength: 1 }
+        lastname: { required: true, number: false, minlength: 2 }
     },
     messages: {
         name: "Informe um nome",

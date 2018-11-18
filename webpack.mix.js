@@ -16,7 +16,6 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.styles([
 	'public/dist/css/style.min.css',
-    'public/assets/node_modules/wizard/steps.css',
     'public/assets/node_modules/sweetalert/sweetalert.css',
     'public/assets/node_modules/DataTables/datatables.css'
 ], 'public/assets/css/rddb.css');
@@ -30,12 +29,24 @@ mix.scripts([
     'public/dist/js/sidebarmenu.js',
     'public/dist/js/custom.min.js',
     'public/assets/node_modules/moment/moment.js',
-    'public/assets/node_modules/wizard/jquery.steps.min.js',
     'public/assets/node_modules/wizard/jquery.validate.min.js',
     'public/assets/node_modules/sweetalert/sweetalert.min.js',
     'public/assets/node_modules/DataTables/datatables.min.js',
-    'public/js/user.js'
 	], 'public/assets/js/rddb.js');
+
+mix.styles(['' +
+    'public/assets/css/bootstrap.min.css',
+    'public/assets/css/gsdk-bootstrap-wizard.css'
+], 'public/assets/css/wizard.css');
+
+mix.scripts([
+    //'public/assets/js/useradd.js',
+    'public/assets/js/jquery.bootstrap.wizard.js',
+
+], 'public/assets/js/wizard.js');
+
 
 mix.version('public/assets/css/rddb.css');
 mix.version('public/assets/js/rddb.js');
+mix.version('public/assets/css/wizard.css');
+mix.version('public/assets/js/wizard.js');

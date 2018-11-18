@@ -20,10 +20,15 @@ Route::get('dashboard/', function () {
 });
 
 
-Route::get('cadastrar/', function () {
-    return view('crud.forms.usuario');
+Route::get('registrar', function () {
+    return view('auth.registrar');
 });
 
+Route::get('compartilhar','ItemController@create')->name('create');
+
+
+Route::post('registrar', 'UsuarioController@registrar')->name('registrar');
+Route::post('compartilhar', 'ItemController@registrar')->name('compartilhar');
 
 
 
@@ -57,6 +62,9 @@ Route::patch('dashboard/configuracao_sistema/{id}/edit', 'GlobalConfigController
 
 Route::resource('dashboard/usuario', 'UsuarioController');
 Route::patch('dashboard/usuario/{id}/edit', 'UsuarioController@update');
+
+Route::resource('dashboard/item', 'ItemController');
+Route::patch('dashboard/item/{id}/edit', 'ItemController@update');
 
 Auth::routes();
 

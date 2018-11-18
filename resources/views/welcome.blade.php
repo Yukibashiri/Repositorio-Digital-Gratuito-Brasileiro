@@ -123,12 +123,15 @@
 <div class="flex-center position-ref full-height">
     @if (Route::has('login'))
         <div class="top-right links">
-            <a href="{{ url('/dashboard') }}">Dashboard</a>
+
             @auth
-                <a href="{{ url('/dashboard') }}">Inicio</a>
+                <a href="{{ url('/') }}">Inicio</a>
+                @if(auth()->user()->categoria_id != 3)
+                    <a href="{{ url('/dashboard') }}">Dashboard</a>
+                @endif
             @else
                 <a href="{{ route('login') }}">Login</a>
-                <a href="{{ route('register') }}">Cadastrar</a>
+                <a href="{{ route('registrar') }}">Cadastrar</a>
             @endauth
         </div>
     @endif

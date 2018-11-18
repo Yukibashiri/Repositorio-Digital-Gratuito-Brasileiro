@@ -1,6 +1,8 @@
 {
     "/js/app.js": "/js/app.js?id=3ec616fb6c8e57ed72f6",
     "/css/app.css": "/css/app.css?id=ae91bda39c903b9c6c5b",
-    "/assets/css/rddb.css": "/assets/css/rddb.css?id=842415e07a39c8e5759f",
-    "/assets/js/rddb.js": "/assets/js/rddb.js?id=60285eb53ad2d7a290e8"
+    "/assets/css/rddb.css": "/assets/css/rddb.css?id=6825671f1e353314596b",
+    "/assets/js/rddb.js": "/assets/js/rddb.js?id=7331b3ccf8e5c31dafdd",
+    "/assets/css/wizard.css": "/assets/css/wizard.css?id=1cf0005fa5fbe2370afb",
+    "/assets/js/wizard.js": "/assets/js/wizard.js?id=cb1677ebc4f7f8be46aa"
 }

@@ -135,7 +135,7 @@ class ColecaoController extends Controller
         if($item->save()){
             return redirect($this->route.'/'.$id.'/edit')->with('tipo','success')->with('mensagem','Item atualizado com sucesso!');
         }
-        return redirect($this->route.'/'.$id.'/edit')->with('tipo','danger')->with('mensagem','Não foi possivel completar a operção!');
+        return redirect($this->route.'/'.$id.'/edit')->with('tipo','danger')->with('mensagem','Não foi possivel completar a operação!');
     }
 
     public function preUpdate(Request $request, $id)
