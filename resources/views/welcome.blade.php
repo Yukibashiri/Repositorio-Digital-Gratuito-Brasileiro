@@ -130,6 +130,8 @@
                     <a href="{{ url('/dashboard') }}">Dashboard</a>
                 @endif
             @else
+                <a href="{{ url('/dashboard') }}">Dashboard</a>
+                <a href="{{ url('/compartilhar') }}">Form Item</a>
                 <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('registrar') }}">Cadastrar</a>
             @endauth
