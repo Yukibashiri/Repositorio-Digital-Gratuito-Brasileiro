@@ -74,8 +74,8 @@
             @yield('content')
         </main>
     </div>
-    <script src="{!! mix('assets/js/rddb.js') !!}"></script>
-    <script src="{!! mix('assets/js/wizard.js') !!}"></script>
     @yield('script')
+    <script src="{!! mix('js/app.js') !!}"></script>
+    <script src="{!! mix('assets/js/wizard.js') !!}"></script>
 </body>
 </html>

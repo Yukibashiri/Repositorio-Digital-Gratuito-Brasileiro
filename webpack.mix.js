@@ -19,7 +19,7 @@ mix.styles([
     'public/assets/node_modules/sweetalert/sweetalert.css',
     'public/assets/node_modules/DataTables/datatables.css'
 ], 'public/assets/css/rddb.css');
-	
+
 mix.scripts([
     'public/assets/node_modules/jquery/jquery-3.2.1.min.js',
     'public/assets/node_modules/popper/popper.min.js',
