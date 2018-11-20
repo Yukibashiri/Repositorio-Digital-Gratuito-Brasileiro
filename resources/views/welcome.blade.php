@@ -118,6 +118,20 @@
             background-color: rgba(0, 150, 136, 0.8);
         }
     </style>
+
+    <style>
+        body {
+            background: #b20053;
+            background: -moz-linear-gradient(45deg, #b20053 0%, #ff262f 22%, #ba007c 69%, #7b075e 100%);
+            background: -webkit-linear-gradient(45deg, #b20053 0%,#ff262f 22%,#ba007c 69%,#7b075e 100%);
+            background: linear-gradient(45deg, #b20053 0%,#ff262f 22%,#ba007c 69%,#7b075e 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b20053', endColorstr='#7b075e',GradientType=1 );
+        }
+
+        .text-color {
+            color: #edeef0 !important;
+        }
+    </style>
 </head>
 <body>
 <div class="flex-center position-ref full-height">
@@ -125,21 +139,21 @@
         <div class="top-right links">
 
             @auth
-                <a href="{{ url('/') }}">Inicio</a>
+                <a href="{{ url('/') }}" class="text-color">Inicio</a>
                 @if(auth()->user()->categoria_id != 3)
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="text-color">Dashboard</a>
                 @endif
             @else
-                <a href="{{ url('/dashboard') }}">Dashboard</a>
-                <a href="{{ url('/compartilhar') }}">Form Item</a>
-                <a href="{{ route('login') }}">Login</a>
-                <a href="{{ route('registrar') }}">Cadastrar</a>
+                <a href="{{ url('/dashboard') }}" class="text-color">Dashboard</a>
+                <a href="{{ url('/compartilhar') }}" class="text-color">Form Item</a>
+                <a href="{{ route('login') }}" class="text-color">Login</a>
+                <a href="{{ route('registrar') }}" class="text-color">Cadastrar</a>
             @endauth
         </div>
     @endif
 
     <div class="content">
-        <div class="title m-b-md">
+        <div class="title m-b-md text-color">
             Repositório Digital
         </div>
 
