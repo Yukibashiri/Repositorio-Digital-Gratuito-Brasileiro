@@ -46,12 +46,14 @@
         }
 
         .title {
-            font-size: 84px;
+            font-size: 2.16em;
+            font-weight: bold;
         }
 
         .links > a {
             color: #636b6f;
             padding: 0 25px;
+            align-content: center;
             font-size: 12px;
             font-weight: 600;
             letter-spacing: .1rem;
@@ -60,32 +62,27 @@
         }
 
         .m-b-md {
-            margin-bottom: 30px;
+            margin-bottom: 2em;
+        }
+        .m-b-img {
+            margin-bottom: 5px;
         }
 
 
-        form {
-            outline: 0;
-            float: left;
-            margin-left: 150px;
-            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-            -webkit-border-radius: 4px;
-            border-radius: 4px;
-        }
+
 
         form > .textbox {
             outline: 0;
-            height: 42px;
-            width: 244px;
+            height: 3.6em;
+            width: 50em;
             line-height: 42px;
             padding: 0 16px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 1);
             color: #212121;
             border: 0;
             float: left;
-            -webkit-border-radius: 4px 0 0 4px;
-            border-radius: 4px 0 0 4px;
+            -webkit-border-radius: 1px 0 0 1px;
+            border-radius: 1px 0 0 1px;
         }
 
         form > .textbox:focus {
@@ -95,23 +92,15 @@
 
         form > .button {
             outline: 0;
-            background: none;
-            background-color: rgba(38, 50, 56, 0.8);
-            float: left;
-            height: 42px;
-            width: 70px;
-            text-align: center;
+            background: url("{!! asset('assets/images/lupa.png') !!}") no-repeat scroll ;
+            background-size: 100% 100%;
+            height: 3.6em;
+            width: 4.2em;
+            padding: -2px 16px;
             line-height: 42px;
             border: 0;
-            color: #FFF;
-            font: normal normal normal 14px/1 FontAwesome;
-            font-size: 16px;
-            text-rendering: auto;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-            -webkit-transition: background-color .4s ease;
-            transition: background-color .4s ease;
-            -webkit-border-radius: 0 4px 4px 0;
-            border-radius: 0 4px 4px 0;
+            -webkit-border-radius: 1px 0 0 1px;
+            border-radius: 1px 0 0 1px;
         }
 
         form > .button:hover {
@@ -153,14 +142,18 @@
     @endif
 
     <div class="content">
-        <div class="title m-b-md text-color">
-            Repositório Digital
+
+        <div class="m-b-img">
+            <img height="26%" width="26%" src="{!! asset('assets/images/logo-intro.png') !!}" alt="logo-ies" class="dark-logo" />
         </div>
 
-        <div class="links" align="center">
+        <div class="title m-b-md text-color">
+            {{ config('app.name') }}
+        </div>
+        <div class="flex-center" >
             <form >
                 <input type="text" class="textbox" placeholder="Digite o que procura..">
-                <input title="Search" value="Buscar" type="submit" class="button">
+                <input title="Search" value="" type="submit" class="button" style="display:inline-block">
             </form>
         </div>
     </div>

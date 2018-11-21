@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'RepDigital'),
+    'name' => env('APP_NAME', 'REPOSITÓRIO DIGITAL GRATUITO BRASILEIRO'),
 
     /*
     |--------------------------------------------------------------------------
