@@ -144,7 +144,7 @@
     <div class="content">
 
         <div class="m-b-img">
-            <img height="26%" width="26%" src="{!! asset('assets/images/logo-intro.png') !!}" alt="logo-ies" class="dark-logo" />
+            <img height="26%" width="26%" src="{!! asset('assets/images/logo-intro-undb.png') !!}" alt="logo-ies" class="dark-logo" />
         </div>
 
         <div class="title m-b-md text-color">
