@@ -17,6 +17,20 @@
     <link href=" {!! mix('assets/css/rddb.css') !!}" rel="stylesheet">
     <link href=" {!! mix('assets/css/wizard.css') !!}" rel="stylesheet">
 </head>
+
+    <style>
+        body {
+            background: #b20053;
+            background: -moz-linear-gradient(45deg, #b20053 0%, #ff262f 22%, #ba007c 69%, #7b075e 100%);
+            background: -webkit-linear-gradient(45deg, #b20053 0%,#ff262f 22%,#ba007c 69%,#7b075e 100%);
+            background: linear-gradient(45deg, #b20053 0%,#ff262f 22%,#ba007c 69%,#7b075e 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b20053', endColorstr='#7b075e',GradientType=1 );
+        }
+
+        .text-color {
+            color: #edeef0 !important;
+        }
+    </style>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
