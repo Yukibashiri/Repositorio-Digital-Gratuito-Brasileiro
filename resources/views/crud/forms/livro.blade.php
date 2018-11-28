@@ -1,6 +1,15 @@
 @extends('layouts.app')
 @include('layouts.message')
+
+@section('style')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@voerro/vue-tagsinput@1.8.0/dist/style.css">
+@stop
+
 @section('content')
+<book-form></book-form>
+@stop
+
+@section('tragoodaod')
 
     <!--   Big container   -->
     <div class="container">
@@ -8,7 +17,7 @@
             <div class="col-sm-8 col-sm-offset-2">
 
                 <!--      Wizard container        -->
-                <div class="wizard-container">
+                <div class="wizard-container" style="display:none">
                     <div class="form-group">
                         @yield('alert_message')
                     </div>
@@ -230,7 +239,6 @@
             </div>
         </div><!-- end row -->
     </div> <!--  big container -->
-
 
 @stop
 
