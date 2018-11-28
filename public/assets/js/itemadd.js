@@ -22,7 +22,7 @@ $(document).ready(function(){
 
     /*  Activate the tooltips      */
     $('[rel="tooltip"]').tooltip();
-
+    $('.wizard-container').show();
     // Code for the Validator
     var $validator = $('.wizard-card form').validate({
         rules: {
@@ -44,7 +44,7 @@ $(document).ready(function(){
             file: "Anesxe o arquivo do seu trabalho",
             title: "Informe o titulo do trabalho",
             resumo: "Cole aqui o resumo do seu trabalho",
-            item_file: "Adicione o seu arquivo"
+            item_file: "Insira o arquivo do seu trabalho"
         }
 	});
 
@@ -238,4 +238,39 @@ function addBotao(){
     $(wrapper).on("click",".delete", function(e){
         e.preventDefault(); $(this).parent('div').remove(); x--;
     })
+
+
 };
+    function loadColecoes(curso) {
+        ajax({
+            url: url('get_unidades_grupo'),
+            type: 'get',
+            data: {
+                id: grupo.val()
+            },
+            success: function(response) {
+                $('#report-unidade').empty();
+                $('#report-unidade').append('<option value="0">Todas</option>');
+                for (var i = 0; i < response.data.length; i++) {
+                    $('#report-unidade').append('<option value=' + response.data[i].id + '>' + response.data[i].nome + '</option>')
+                }
+            }
+        })
+    };
+
+    function loadDisciplinas(curso) {
+        ajax({
+            url: url('get_unidades_grupo'),
+            type: 'get',
+            data: {
+                id: grupo.val()
+            },
+            success: function(response) {
+                $('#report-unidade').empty();
+                $('#report-unidade').append('<option value="0">Todas</option>');
+                for (var i = 0; i < response.data.length; i++) {
+                    $('#report-unidade').append('<option value=' + response.data[i].id + '>' + response.data[i].nome + '</option>')
+                }
+            }
+        })
+    };

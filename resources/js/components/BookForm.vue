@@ -169,46 +169,12 @@
                                         </div>
 
 
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
-                                                <select id="tags" name="tags" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    <option v-for="(tag, id) in tags" :value="id">
-                                                        {{tag}}
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <select name="tags" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    <option v-for="(tag, id) in tags" :value="id">
-                                                        {{tag}}
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <select name="tags" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    <option v-for="(tag, id) in tags" :value="id">
-                                                        {{tag}}
-                                                    </option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <select name="tags" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    <option v-for="(tag, id) in tags" :value="id">
-                                                        {{tag}}
-                                                    </option>
-                                                </select>
+                                                <tags-input element-id="tags"
+                                                    :existing-tags="this.tags"
+                                                    :typeahead="true">
+                                                </tags-input>
                                             </div>
                                         </div>
 
@@ -245,8 +211,9 @@
 <script>
     import axios from 'axios';
     import { Form, HasError } from 'vform';
+    Vue.component('tags-input', require('@voerro/vue-tagsinput').default);
     Vue.component(HasError.name, HasError);
-
+    Vue.config.keyCodes.backspace = 8;
     export default {
         data () {
             //-> Inicio uma variável na classe chamada "tab" que inicia na "info"
@@ -348,4 +315,6 @@
     .active.show {
         background-color: #8a28ff;
     }
+
+
 </style>
