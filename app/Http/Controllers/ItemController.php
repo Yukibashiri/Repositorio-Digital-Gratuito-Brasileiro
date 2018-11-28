@@ -53,7 +53,6 @@ class ItemController extends Controller
             ->select( 'usuario.id')
             ->selectRaw('CONCAT(informacao_pessoal.sobrenome,\', \',informacao_pessoal.nome) as nome')
             ->get();
-        //dd($usuarios);
         $tags = Tags::all();
 
         return view('crud.forms.livro',array('colecoes' => $colecoes,'cursos' => $cursos, 'papeis' => $papeis, 'usuarios' => $usuarios, 'tags' => $tags , 'disciplinas' => $disciplinas));
@@ -89,7 +88,7 @@ class ItemController extends Controller
             'tags.*' => 'required',
             'authors.*' => 'required',
             'resumo' => 'required|min:50',
-//            'item_file' => 'required',
+            'item_file' => 'required|file',
             'title' => 'min:2']);
 
         DB::beginTransaction();
@@ -101,9 +100,11 @@ class ItemController extends Controller
             $item->subtitulo = $request->input('subtitle');
             $item->resumo = $request->input('resumo');
             $item->curso_id = $request->input('curso_id');
-            $item->disciplina_id = $request->input('disciplina_id') ? $request->input('disciplina_id') : '';
+             if($request->filled('disciplina_id')  )
+                $item->disciplina_id = $request->input('disciplina_id');
             $item->situacao_id = 2;
-            $item->nota = $request->input('nota') ? $request->input('nota') : '';
+            if ($request->has('nota'))
+                $item->nota =  $request->input('nota');
             $item->colecao_id = $request->input('colecao_id');
             $item->colecao_id = $request->input('colecao_id');
             $item->created_at = now();
@@ -111,37 +112,36 @@ class ItemController extends Controller
             if (!$item->save()){
                 return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
             }
-            dd('oi');
 
-//            if($request->hasFile('item_file')){
-//                return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Não foi possivel completar a operação!');
-//            }
-//
-//            $file = new Arquivo();
-//            $arquivo = $request->file('file');
-//            $extensao = ArquivoExtensao::Where('slug','=',$arquivo->getClientOriginalExtension())->firstOrFail();
-//            if(!$extensao){
-//                return redirect('registrar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
-//            }
-//            $file->nome = md5($item>id).".".$extensao->slug;
-//            $file->caminho = 'assets/itens/arquivos/';
-//            $file->arquivo_extensao_id = $extensao->id;
-//            $file->status = 1;
-//            $file->created_at = now();
-//            $file->updated_at = now();
-//            $request->file('file')->move(asset('assets/itens/arquivos/'), $file->nome);
-//            if (!$file->save()){
-//                return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
-//            }
-//
-//            $item_has_file = new ItemFile();
-//            $item_has_file->item_id = $item->id;
-//            $item_has_file->arquivo_id = $file->id;
-//            $item_has_file->created_at = now();
-//            $item_has_file->updated_at = now();
-//            if (!$item_has_file->save()){
-//                return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
-//            }
+            if($request->hasFile('item_file')){
+                return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Não foi possivel completar a operação!');
+            }
+
+            $file = new Arquivo();
+            $arquivo = $request->file('file');
+            $extensao = ArquivoExtensao::Where('slug','=',$arquivo->getClientOriginalExtension())->firstOrFail();
+            if(!$extensao){
+                return redirect('registrar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
+            }
+            $file->nome = md5($item>id).".".$extensao->slug;
+            $file->caminho = 'assets/itens/arquivos/';
+            $file->arquivo_extensao_id = $extensao->id;
+            $file->status = 1;
+            $file->created_at = now();
+            $file->updated_at = now();
+            $request->file('file')->move(asset('assets/itens/arquivos/'), $file->nome);
+            if (!$file->save()){
+                return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
+            }
+
+            $item_has_file = new ItemFile();
+            $item_has_file->item_id = $item->id;
+            $item_has_file->arquivo_id = $file->id;
+            $item_has_file->created_at = now();
+            $item_has_file->updated_at = now();
+            if (!$item_has_file->save()){
+                return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
+            }
 
 
 
@@ -149,12 +149,13 @@ class ItemController extends Controller
             $autores = $request->input('authors');
             $papeis = $request->input('roles');
             for ($index = 0 ; $index < count($autores); $index ++) {
-
                 $autor_item = new ItemAuthors();
+
                 $autor_item->item_id = $item->id;
                 $autor_item->usuario_id = $autores[$index];
                 $autor_item->papel_id = $papeis[$index];
                 $autor_item->status = 1;
+
                 if (!$autor_item->save()){
                     return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro da informação Pessoal!');
                 }
@@ -169,17 +170,13 @@ class ItemController extends Controller
                     return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro da informação Pessoal!');
                 }
             }
-
-
+            DB::commit();
+            return redirect('compartilhar')->with('tipo','success')->with('mensagem','Seu artigo foi registrado, parabéns!');
         }
         catch (ExpectationFailedException $ex){
             DB::rollBack();
+            console.log('fudeu');
             return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Não foi possivel completar a operção!');
-        }
-        finally{
-            DB::commit();
-            return redirect('compartilhar')->with('tipo','success')->with('mensagem','Seu artigo foi registrado, parabéns!');
-
         }
 
     }

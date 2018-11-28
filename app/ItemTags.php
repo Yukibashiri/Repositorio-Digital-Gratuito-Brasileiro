@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class ItemTags extends Model
 {
     protected $table = "item_tem_palavras_chave";
+    public $timestamps = false;
 }

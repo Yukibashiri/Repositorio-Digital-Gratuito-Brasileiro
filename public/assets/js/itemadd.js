@@ -31,9 +31,9 @@ $(document).ready(function(){
             "roles[]": { required: true },
             "tags[]": { required: true },
             "authors[]": { required: true },
-            // item_file: { required: true, file: true },
+            item_file: { required: true, file: true },
             resumo: { required: true, number: false, minlength: 50 },
-            title: { required: true, number: false, minlength: 2 }
+            title: { required: true, number: false, minlength: 2 },
         },
         messages: {
             colecao_id: "Informe o tipo de trabalho",
@@ -43,7 +43,8 @@ $(document).ready(function(){
             "authors[]": "Informe o nome dos participantes",
             file: "Anesxe o arquivo do seu trabalho",
             title: "Informe o titulo do trabalho",
-            resumo: "Cole aqui o resumo do seu trabalho"
+            resumo: "Cole aqui o resumo do seu trabalho",
+            item_file: "Adicione o seu arquivo"
         }
 	});
 

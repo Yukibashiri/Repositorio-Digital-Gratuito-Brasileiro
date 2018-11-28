@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +17,9 @@
     <!-- Styles -->
     <link href=" {!! mix('assets/css/rddb.css') !!}" rel="stylesheet">
     <link href=" {!! mix('assets/css/wizard.css') !!}" rel="stylesheet">
+    <script>
+        const global = {!! $globalConfigs !!};
+    </script>
 </head>
 
     <style>
@@ -88,8 +92,8 @@
             @yield('content')
         </main>
     </div>
-    @yield('script')
-    <script src="{!! mix('js/app.js') !!}"></script>
+    <script src="{!! mix('assets/js/rddb.js') !!}"></script>
     <script src="{!! mix('assets/js/wizard.js') !!}"></script>
+    @yield('script')
 </body>
 </html>
