@@ -117,48 +117,8 @@
                                         </div>
 
 
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <select id="tags[]" name="tags[0]" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    @foreach($tags as $row)
-                                                        <option value="{{ $row['id'] }}" @if (isset($item->papel_id) && $row['id'] == $item->papel_id)  selected="selected" @endif>{{ $row['texto'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <select id="tags[]" name="tags[1]" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    @foreach($tags as $row)
-                                                        <option value="{{ $row['id'] }}" @if (isset($item->papel_id) && $row['id'] == $item->papel_id)  selected="selected" @endif>{{ $row['texto'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <select id="tags[]" name="tags[2]" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    @foreach($tags as $row)
-                                                        <option value="{{ $row['id'] }}" @if (isset($item->papel_id) && $row['id'] == $item->papel_id)  selected="selected" @endif>{{ $row['texto'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                        <tags-component></tags-component>
 
-                                        </div>
-
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <select id="tags[]" name="tags[3]" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    @foreach($tags as $row)
-                                                        <option value="{{ $row['id'] }}" @if (isset($item->papel_id) && $row['id'] == $item->papel_id)  selected="selected" @endif>{{ $row['texto'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
 
                                         <div class="col-sm-12">
                                         <div class="form-group">

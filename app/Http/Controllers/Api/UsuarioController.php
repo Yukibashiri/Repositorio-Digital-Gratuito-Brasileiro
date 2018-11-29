@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\InformacaoPessoal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Usuario;
@@ -17,6 +18,10 @@ class UsuarioController extends Controller
             ->join('categoria', 'usuario.categoria_id', '=', 'categoria.id')
             ->whereNull('usuario.deleted_at')
             ->whereIn('usuario.categoria_id',array(1,2,3))
+            ->where(function($q) {
+                if (request()->filled('q'))
+                    $q->where('informacao_pessoal.nome', 'like', '%'.request('q').'%');
+            })
             ->select( 'usuario.id')
             ->selectRaw('CONCAT(informacao_pessoal.sobrenome, \', \', informacao_pessoal.nome) as nome')
             ->get());
@@ -26,9 +31,9 @@ class UsuarioController extends Controller
         Request $request
     )
     {
-        $users = Usuario::where(function($q) use ($request) {
+        $users = InformacaoPessoal::where(function($q) use ($request) {
             if ($request->filled('q'))
-                $q->where('codinome', 'like', '%'.$request->get('q').'%');
+                $q->where('nome', 'like', '%'.$request->get('q').'%');
         })->get();
 
         return response()

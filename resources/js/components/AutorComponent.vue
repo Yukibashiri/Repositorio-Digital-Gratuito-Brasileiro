@@ -9,6 +9,9 @@
                         <label class="control-label">Papel</label>
                         <select id="roles[0]" name="roles[]" class="form-control" >
                             <option value="" selected="selected">Selecione</option>
+                            <option :value="index" v-for="(papel, index) in papeis">
+                                {{papel}}
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -20,7 +23,7 @@
                                 class="mb-4"
                                 v-model="query"
                                 :data="users"
-                                :serializer="item => item.codinome"
+                                :serializer="item => item.nome"
                                 @hit="selectedUser = $event"
                         />
                     </div>
@@ -50,6 +53,7 @@
                 query: "",
                 users: [],
                 count: 1,
+                papeis: [],
                 selectedUser: null
             }
         },
@@ -64,6 +68,13 @@
 
                 if (this.count < parseInt(global.max_authors))
                     this.count = this.count + 1;
+            },
+
+            loadPapeis () {
+                axios.get(`api/papeis`)
+                    .then((r) => {
+                        this.papeis = r.data
+                    });
             }
         },
 
@@ -82,6 +93,10 @@
             stringify(value) {
                 return JSON.stringify(value, null, 2)
             }
+        },
+
+        mounted () {
+            this.loadPapeis();
         }
 
     }

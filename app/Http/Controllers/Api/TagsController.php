@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tags;
+use Illuminate\Support\Facades\DB;
 
 class TagsController extends Controller
 {
     public function index()
     {
-        return response()->json(Tags::pluck('texto', 'id'));
+        $tags = Tags::selectRaw(
+            'id, texto as text'
+        )->get();
+
+        return response()->json($tags);
     }
 }
