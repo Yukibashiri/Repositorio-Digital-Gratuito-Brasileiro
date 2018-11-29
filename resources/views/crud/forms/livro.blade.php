@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@voerro/vue-tagsinput@1.8.0/dist/style.css">
 @stop
 
-@section('content')
-<book-form></book-form>
-@stop
+{{--@section('tragoodaod')--}}
+{{--<book-form></book-form>--}}
+{{--@stop--}}
 
-@section('tragoodaod')
+@section('content')
 
     <!--   Big container   -->
     <div class="container">
@@ -96,57 +96,8 @@
                                 <div class="tab-pane" id="author">
                                     <h4 class="info-text"> Informe quem são os envolvidos no projeto </h4>
 
-                                    <div class="row" id="repeater">
+                                    <autor-component></autor-component>
 
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <label for="papel_id" class="control-label">Papel</label>
-                                                <select id="roles[0]" name="roles[]" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    @foreach($papeis as $row)
-                                                        <option value="{{ $row['id'] }}" @if ( (isset($item->papel_id) && $row['id'] == $item->papel_id) || old('papel_id') )  selected="selected" @endif>{{ $row['nome'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-8">
-                                            <div class="form-group">
-                                                <label>Nome Completo <small>(obrigatório)</small></label>
-                                                <select id="authors[0]" name="authors[]" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    @foreach($usuarios as $row)
-                                                        <option value="{{ $row->id }}" @if (isset($item->papel_id) && $row->id == $item->papel_id)  selected="selected" @endif>{{ $row->nome }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <label for="papel_id" class="control-label">Papel</label>
-                                                <select id="papel_id" name="roles[1]" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    @foreach($papeis as $row)
-                                                        <option value="{{ $row['id'] }}" @if (isset($item->papel_id) && $row['id'] == $item->papel_id)  selected="selected" @endif>{{ $row['nome'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-8">
-                                            <div class="form-group">
-                                                <label>Nome Completo <small>(obrigatório)</small></label>
-                                                <select id="authors[]" name="authors[1]" class="form-control" >
-                                                    <option value="" selected="selected">Selecione</option>
-                                                    @foreach($usuarios as $row)
-                                                        <option value="{{ $row->id }}" @if (isset($item->papel_id) && $row->id == $item->papel_id)  selected="selected" @endif>{{ $row->nome }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                    </div>
                                 </div>
                                 <div class="tab-pane" id="details">
                                     <h4 class="info-text"> Hora de mandar os detalhes do seu projeto </h4>

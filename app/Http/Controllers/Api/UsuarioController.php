@@ -21,4 +21,17 @@ class UsuarioController extends Controller
             ->selectRaw('CONCAT(informacao_pessoal.sobrenome, \', \', informacao_pessoal.nome) as nome')
             ->get());
     }
+
+    public function queryUsers(
+        Request $request
+    )
+    {
+        $users = Usuario::where(function($q) use ($request) {
+            if ($request->filled('q'))
+                $q->where('codinome', 'like', '%'.$request->get('q').'%');
+        })->get();
+
+        return response()
+            ->json($users);
+    }
 }

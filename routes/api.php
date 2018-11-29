@@ -28,5 +28,7 @@ Route::group([
     $route->get('tags', 'TagsController@index');
 
     $route->post('item/registrar/informacoes', 'ItemController@registrarInformacoes');
+
+    $route->get('procurar-autor', 'UsuarioController@queryUsers');
 });
 

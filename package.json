@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@voerro/vue-tagsinput": "^1.11.1",
-        "vform": "^1.0.0"
+        "vform": "^1.0.0",
+        "vue-bootstrap-typeahead": "^0.2.6"
     }
 }
