@@ -33,8 +33,8 @@ class UsuarioController extends Controller
     {
         $users = InformacaoPessoal::where(function($q) use ($request) {
             if ($request->filled('q'))
-                $q->where('nome', 'like', '%'.$request->get('q').'%');
-        })->get();
+                $q->where('nome', 'like', '%'.$request->get('q').'%')->orWhere('sobrenome', 'like', '%'.$request->get('q').'%');
+        })->selectRaw('CONCAT(nome,\' \',sobrenome) as nome, id')->get();
 
         return response()
             ->json($users);
