@@ -41,8 +41,10 @@ mix.styles(['' +
 
 mix.scripts([
     //'public/assets/js/useradd.js',
-    'public/assets/js/jquery.bootstrap.wizard.js',
-
+    'public/assets/js/wizard/jquery-2.2.4.min.js',
+    'public/assets/js/wizard/bootstrap.min.js',
+    'public/assets/js/wizard/jquery.bootstrap.wizard.js',
+    //'public/assets/js/wizard/jquery.bootstrap.wizard.js',
 ], 'public/assets/js/wizard.js');
 
 

@@ -101,6 +101,7 @@
                                 </div>
                                 <div class="tab-pane" id="details">
                                     <h4 class="info-text"> Hora de mandar os detalhes do seu projeto </h4>
+                                    
                                     <div class="row" >
 
                                         <div class="col-sm-12">
@@ -120,11 +121,11 @@
                                         <tags-component></tags-component>
 
 
-                                        <div class="col-sm-12">
-                                        <div class="form-group">
-                                        <label>Anexe seu arquivo aqui <small>(obrigatório)</small></label>
-                                        <input type="file" name="item_file" id="item_file">
-                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Anexe seu arquivo aqui <small>(obrigatório)</small></label>
+                                                <input type="file" name="item_file" id="item_file">
+                                             </div>
                                         </div>
 
                                     </div>
@@ -156,4 +157,5 @@
 
 @section('script')
     <script src="{!! asset('assets/js/itemadd.js') !!}"></script>
+    <script src="{!! asset('assets/js/wizard/jquery.validate.min.js') !!}"></script>
 @stop

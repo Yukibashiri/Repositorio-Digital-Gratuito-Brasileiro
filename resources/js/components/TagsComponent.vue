@@ -2,13 +2,7 @@
 
     <div class="col-sm-12">
         <div class="form-group">
-            <vue-tags-input
-                    name="tags"
-                    v-model="tag"
-                    :tags="tags"
-                    :autocomplete-items="filteredItems"
-                    @tags-changed="newTags => tags = newTags">
-            </vue-tags-input>
+
         </div>
     </div>
 
@@ -16,14 +10,11 @@
 
 <script>
 
-    import VueTagsInput from '@johmun/vue-tags-input';
+    import VueTagsInput from '@johmun/vue-tags-input'
 
 
     export default {
 
-        components: {
-            VueTagsInput,
-        },
         data() {
             return {
                 tag: '',
@@ -32,12 +23,16 @@
             };
         },
 
+        components: {
+            VueTagsInput,
+        },
+
         methods: {
             loadTags () {
                 axios.get(`api/tags`)
                     .then((r) => {
-                        this.autocompleteItems = r.data;
-                    })
+                        this.autocompleteItems = r.data
+                    });
             }
         },
 
