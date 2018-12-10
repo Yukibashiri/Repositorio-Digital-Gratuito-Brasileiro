@@ -12,8 +12,11 @@ class TagsController extends Controller
     public function index()
     {
         $tags = Tags::selectRaw(
-            'id, texto as text'
-        )->get();
+            'id, texto as name'
+        )
+        ->orderBy('name')
+        ->get()
+        ->pluck('name', 'id');
 
         return response()->json($tags);
     }

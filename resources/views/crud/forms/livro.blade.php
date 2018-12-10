@@ -2,7 +2,7 @@
 @include('layouts.message')
 
 @section('style')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@voerro/vue-tagsinput@1.8.0/dist/style.css">
+    <link href=" {!! asset('assets/css/tags.css') !!}" rel="stylesheet">
 @stop
 
 {{--@section('tragoodaod')--}}

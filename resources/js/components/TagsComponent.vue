@@ -2,46 +2,42 @@
 
     <div class="col-sm-12">
         <div class="form-group">
-
+            <tags-input element-id="tags"
+                :existing-tags="this.tags"
+                :typeahead="true">
+            </tags-input>
         </div>
     </div>
 
 </template>
 
 <script>
+    import axios from 'axios';
+    import VoerroTagsInput from '@voerro/vue-tagsinput';
 
-    import VueTagsInput from '@johmun/vue-tags-input'
-
+    Vue.component('tags-input', VoerroTagsInput);
+    Vue.config.keyCodes.backspace = 8;
 
     export default {
-
-        data() {
+        data () {
+            //-> Inicio uma variável na classe chamada "tab" que inicia na "info"
+            //-> as tabs estão alterando diretamente no evento vue "@click" "variável tab = 'nome da tab'"
             return {
-                tag: '',
-                tags: [],
-                autocompleteItems: []
-            };
+                tags: []
+            }
         },
 
-        components: {
-            VueTagsInput,
-        },
+        components: { VoerroTagsInput },
 
         methods: {
             loadTags () {
-                axios.get(`api/tags`)
+                axios.get('api/tags')
                     .then((r) => {
-                        this.autocompleteItems = r.data
-                    });
-            }
+                        const {data} = r;
+                        this.tags = data;
+                    })
+            },
         },
-
-        computed: {
-            filteredItems() {
-                return this.autocompleteItems.filter(i => new RegExp(this.tag, 'i').test(i.text));
-            }
-        },
-
         beforeMount () {
             this.loadTags();
         }
