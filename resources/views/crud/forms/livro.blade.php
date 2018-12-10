@@ -3,6 +3,7 @@
 
 @section('style')
     <link href=" {!! asset('assets/css/tags.css') !!}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
 @stop
 
 {{--@section('tragoodaod')--}}
@@ -124,7 +125,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Anexe seu arquivo aqui <small>(obrigatório)</small></label>
-                                                <input type="file" name="item_file" id="item_file">
+                                                <input type="file" name="arquivo" id="arquivo">
                                              </div>
                                         </div>
 
@@ -158,4 +159,5 @@
 @section('script')
     <script src="{!! asset('assets/js/itemadd.js') !!}"></script>
     <script src="{!! asset('assets/js/wizard/jquery.validate.min.js') !!}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
 @stop

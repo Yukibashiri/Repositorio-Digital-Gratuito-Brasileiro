@@ -23,7 +23,7 @@ class UsuarioController extends Controller
                     $q->where('informacao_pessoal.nome', 'like', '%'.request('q').'%');
             })
             ->select( 'usuario.id')
-            ->selectRaw('CONCAT(informacao_pessoal.sobrenome, \', \', informacao_pessoal.nome) as nome')
+            ->selectRaw('CONCAT(informacao_pessoal.nome, \' \', informacao_pessoal.sobrenome) as nome')
             ->get());
     }
 

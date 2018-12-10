@@ -4,6 +4,8 @@
         <div class="form-group">
             <tags-input element-id="tags"
                 :existing-tags="this.tags"
+                :limit="this.maxlimit"
+                placeholder="Informe as palavras-chave"
                 :typeahead="true">
             </tags-input>
         </div>
@@ -23,7 +25,8 @@
             //-> Inicio uma variável na classe chamada "tab" que inicia na "info"
             //-> as tabs estão alterando diretamente no evento vue "@click" "variável tab = 'nome da tab'"
             return {
-                tags: []
+                tags: null,
+                maxlimit: 0
             }
         },
 
@@ -37,9 +40,18 @@
                         this.tags = data;
                     })
             },
+            loadLimit() {
+                axios.get('api/system/max-keywords')
+                    .then((r) => {
+                        const {data} = r;
+                        this.maxlimit = data;
+                    })
+
+            },
         },
         beforeMount () {
             this.loadTags();
+            this.loadLimit();
         }
 
     }

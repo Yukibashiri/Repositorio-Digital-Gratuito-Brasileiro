@@ -26,6 +26,8 @@ Route::group([
     $route->get('papeis', 'PapelController@index');
     $route->get('usuarios', 'UsuarioController@index');
     $route->get('tags', 'TagsController@index');
+    $route->get('usuarios', 'UsuarioController@index');
+    $route->get('system/max-keywords', 'GlobalConfigController@maxKeyWords');
 
     $route->post('item/registrar/informacoes', 'ItemController@registrarInformacoes');
 

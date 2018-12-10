@@ -51,8 +51,8 @@ class ItemController extends Controller
             ->whereNull('usuario.deleted_at')
             ->whereIn('usuario.categoria_id',array(1,2,3))
             ->select( 'usuario.id')
-            ->selectRaw('CONCAT(informacao_pessoal.sobrenome,\', \',informacao_pessoal.nome) as nome')
-            ->get();
+            ->selectRaw('CONCAT(informacao_pessoal.sobrenome,\', \',informacao_pessoal.nome) as name')
+            ->get()->pluck('name','id');
         $tags = Tags::all();
 
         return view('crud.forms.livro',array('colecoes' => $colecoes,'cursos' => $cursos, 'papeis' => $papeis, 'usuarios' => $usuarios, 'tags' => $tags , 'disciplinas' => $disciplinas));
@@ -88,22 +88,23 @@ class ItemController extends Controller
             'tags.*' => 'required',
             'authors.*' => 'required',
             'resumo' => 'required|min:50',
-            'item_file' => 'required|file',
+            'arquivo' => 'required|file',
             'title' => 'min:2']);
-
+        dd($request);
         DB::beginTransaction();
         try{
 
             $item = new Item();
             $item->colecao_id = $request->input('colecao_id');
             $item->titulo = $request->input('title');
-            $item->subtitulo = $request->input('subtitle');
+            if ($request->filled('subtitle'))
+                $item->subtitulo =  $request->input('subtitle');
             $item->resumo = $request->input('resumo');
             $item->curso_id = $request->input('curso_id');
              if($request->filled('disciplina_id')  )
                 $item->disciplina_id = $request->input('disciplina_id');
             $item->situacao_id = 2;
-            if ($request->has('nota'))
+            if ($request->has('nota') && $request->filled('nota'))
                 $item->nota =  $request->input('nota');
             $item->colecao_id = $request->input('colecao_id');
             $item->colecao_id = $request->input('colecao_id');
@@ -113,7 +114,7 @@ class ItemController extends Controller
                 return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
             }
 
-            if($request->hasFile('item_file')){
+            if($request->hasFile('arquivo')){
                 return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Não foi possivel completar a operação!');
             }
 
