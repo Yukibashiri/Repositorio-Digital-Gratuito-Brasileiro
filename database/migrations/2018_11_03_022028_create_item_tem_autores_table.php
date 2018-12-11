@@ -15,7 +15,7 @@ class CreateItemTemAutoresTable extends Migration {
 		Schema::create('item_tem_autores', function(Blueprint $table)
 		{
 			$table->bigInteger('item_id')->index('fk_item_has_usuario_item1_idx');
-			$table->bigInteger('usuario_id')->index('fk_item_has_usuario_usuario1_idx');
+			$table->string('usuario_id', 255);
 			$table->integer('papel_id')->index('fk_item_tem_autores_papel1_idx');
 			$table->boolean('status', 1)->nullable();
 		});

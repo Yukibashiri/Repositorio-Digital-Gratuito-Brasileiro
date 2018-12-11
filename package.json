@@ -20,8 +20,8 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
-        "@johmun/vue-tags-input": "^1.5.10",
         "@voerro/vue-tagsinput": "^1.11.1",
+        "v-suggest": "^1.0.4",
         "vform": "^1.0.0",
         "vue-bootstrap-typeahead": "^0.2.6"
     }

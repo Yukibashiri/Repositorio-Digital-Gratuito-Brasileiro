@@ -3,12 +3,12 @@
     <div class="row" id="repeater">
 
         <div class="col-lg-12">
-            <div class="row" v-for="index in count">
+            <div class="row" v-for="id in count">
 
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label">Papel</label>
-                        <select id="roles[index]" name="roles[index]" class="form-control" >
+                        <select id="roles[id]" name="roles[]" class="form-control" >
                             <option value="" selected="selected">Selecione</option>
                             <option :value="index" v-for="(papel, index) in papeis">
                                 {{papel}}
@@ -16,7 +16,7 @@
                         </select>
                     </div>
                 </div>
-
+    
                 <div class="col-sm-7">
                     <div class="form-group">
                         <label class="control-label">Nome Completo <small>(obrigatório)</small></label>
@@ -25,21 +25,12 @@
                                 v-model="query"
                                 placeholder="Informe o nome"
                                 :serializer="item => item.nome"
-                                @hit="selectedUser = $event"
+                                @hit="setAuthor(id,query)" 
+                                @input="setAuthor(id,query)" 
                         />
                     </div>
                 </div>
-
-                <div class="col-sm-7">
-                    <div class="form-group">
-                        <label class="control-label">Nome Completo <small>(obrigatório)</small></label>
-                        <select data-live-search="true" data-live-search-style="startsWith" class="form-control">
-                            <option :value="index" v-for="(nome, index) in autores">
-                                {{nome}}
-                            </option>
-                        </select>
-                    </div>
-                </div>
+                <input type="hidden" name="authors[]" id="authors[id]" v-bind:value="getAuthor(id)">
 
             </div>
                 <button v-if="this.maxAuthors()" class="btn btn-success btn-xs" type="button"
@@ -68,6 +59,7 @@
                 query: "",
                 users: [],
                 roles: [],
+                authors: [],
                 count: 0,
                 max_authors: 0,
                 papeis: [],
@@ -86,6 +78,19 @@
 
                 if (this.count < parseInt(global.max_authors))
                     this.count = this.count + 1;
+            },
+
+            getAuthor (index) {
+                //this.$refs.authors[index] = query; 
+                //users[index] = query;
+                return this.authors[index];
+            },
+
+            setAuthor (index, query) {
+                //this.$refs.authors[index] = query; 
+                //users[index] = query;
+                console.log(query);
+                this.authors[index] = query;
             },
 
             loadMinAuthors () {

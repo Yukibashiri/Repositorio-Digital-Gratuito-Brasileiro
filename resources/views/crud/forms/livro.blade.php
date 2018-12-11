@@ -3,7 +3,6 @@
 
 @section('style')
     <link href=" {!! asset('assets/css/tags.css') !!}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
 @stop
 
 {{--@section('tragoodaod')--}}
@@ -159,5 +158,4 @@
 @section('script')
     <script src="{!! asset('assets/js/itemadd.js') !!}"></script>
     <script src="{!! asset('assets/js/wizard/jquery.validate.min.js') !!}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
 @stop

@@ -34,7 +34,7 @@ mix.scripts([
     'public/assets/node_modules/DataTables/datatables.min.js',
 	], 'public/assets/js/rddb.js');
 
-mix.styles(['' +
+mix.styles([
     'public/assets/css/bootstrap.min.css',
     'public/assets/css/gsdk-bootstrap-wizard.css'
 ], 'public/assets/css/wizard.css');
@@ -44,7 +44,7 @@ mix.scripts([
     'public/assets/js/wizard/jquery-2.2.4.min.js',
     'public/assets/js/wizard/bootstrap.min.js',
     'public/assets/js/wizard/jquery.bootstrap.wizard.js',
-    //'public/assets/js/wizard/jquery.bootstrap.wizard.js',
+    'node_modules/v-suggest/dist/v-suggest.js'
 ], 'public/assets/js/wizard.js');
 
 

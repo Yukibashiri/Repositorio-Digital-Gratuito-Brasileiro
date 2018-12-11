@@ -19,6 +19,7 @@ class CreateItemTable extends Migration {
 			$table->string('titulo');
 			$table->string('subtitulo')->nullable();
             $table->text('resumo');
+            $table->bigInteger('usuario_id')->nullable()->index('fk_item_usuario1_idx');
 			$table->integer('curso_id')->nullable()->index('fk_item_curso1_idx');
 			$table->integer('disciplina_id')->nullable()->index('fk_item_disciplina1_idx')->nullable();
 			$table->integer('situacao_id')->index('fk_item_situacao1_idx');
