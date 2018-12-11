@@ -86,11 +86,11 @@ class ItemController extends Controller
             'curso_id' => 'required',
             'roles.*' => 'required',
             'tags.*' => 'required',
-            'authors.*' => 'required',
+            'authors.*' => 'required|min:4',
             'resumo' => 'required|min:50',
             'arquivo' => 'required|file',
             'title' => 'min:2']);
-        dd($request);
+        //dd($request);
         DB::beginTransaction();
         try{
 
@@ -100,6 +100,8 @@ class ItemController extends Controller
             if ($request->filled('subtitle'))
                 $item->subtitulo =  $request->input('subtitle');
             $item->resumo = $request->input('resumo');
+
+            
             $item->curso_id = $request->input('curso_id');
              if($request->filled('disciplina_id')  )
                 $item->disciplina_id = $request->input('disciplina_id');
@@ -114,23 +116,23 @@ class ItemController extends Controller
                 return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
             }
 
-            if($request->hasFile('arquivo')){
-                return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Não foi possivel completar a operação!');
+            if($request->hasFile('file')){
+                return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Erro. Favor adicionar o arquivo da produção!');
             }
 
             $file = new Arquivo();
-            $arquivo = $request->file('file');
+            $arquivo = $request->file('arquivo');
             $extensao = ArquivoExtensao::Where('slug','=',$arquivo->getClientOriginalExtension())->firstOrFail();
             if(!$extensao){
-                return redirect('registrar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
+                return redirect('registrar')->with('tipo','danger')->with('mensagem','Erro. Extensão não suportada!');
             }
-            $file->nome = md5($item>id).".".$extensao->slug;
+            $file->nome = md5($item->id).".".$extensao->slug;
             $file->caminho = 'assets/itens/arquivos/';
             $file->arquivo_extensao_id = $extensao->id;
             $file->status = 1;
             $file->created_at = now();
             $file->updated_at = now();
-            $request->file('file')->move(asset('assets/itens/arquivos/'), $file->nome);
+            $request->file('arquivo')->move(public_path('assets/itens/arquivos/'), $file->nome);
             if (!$file->save()){
                 return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
             }
@@ -143,9 +145,6 @@ class ItemController extends Controller
             if (!$item_has_file->save()){
                 return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro do usuário!');
             }
-
-
-
 
             $autores = $request->input('authors');
             $papeis = $request->input('roles');
@@ -161,8 +160,21 @@ class ItemController extends Controller
                     return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro da informação Pessoal!');
                 }
             }
+            $tags_enviadas = explode(",",$request->input('tags'));
+            foreach($tags_enviadas as $tag){
 
-            foreach($request->input('tags') as $tag){
+                if(!Tags::findOrFail($tag)){
+                    
+                    $new_tag = new Tags();
+                    $new_tag->texto = $tag;
+                    $new_tag->created_at = now();
+                    $new_tag->updated_at = now();
+                    if(!$new_tag->save()){
+                        return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro na inserção das novas palavras chaves!');
+                    }
+                    $tag = $new_tag->id;
+                }   
+
                 $tag_item = new ItemTags();
                 $tag_item->item_id = $item->id;
                 $tag_item->tags_id = $tag;
