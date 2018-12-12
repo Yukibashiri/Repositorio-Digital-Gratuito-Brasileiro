@@ -25,7 +25,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">RDDB</p>
+            <p class="loader__label">RDMI</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -50,7 +50,7 @@
                             <img src="{!! asset('assets/images/logo-light-icon.png') !!}" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
-                        <span class="hidden-xs"><span class="font-bold">RDDB</span>Admin</span>
+                        <span class="hidden-xs"><span class="font-bold">RDMI</span>Admin</span>
                     </a>
                 </div>
                 <!-- ============================================================== -->
@@ -296,7 +296,12 @@
                                 <!-- text-->
                                 <div class="dropdown-divider"></div>
                                 <!-- text-->
-                                <a href="pages-login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Sair</a>
+                                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-power-off" ></i> Sair</a>
+                                
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 <!-- text-->
                             </div>
                         </li>
@@ -326,7 +331,7 @@
                         <li> <a class="waves-effect waves-dark" href="{{ url('/dashboard/usuario') }}"><i class="mdi mdi-account-card-details"></i><span class="hide-menu">Usuários</span></a>
                         </li>
 
-                        <li> <a class="waves-effect waves-dark" href="{{ url('/dashboard/item') }}"><i class="mdi mdi-book-open-page-variant"></i><span class="hide-menu">Materiais científicos(OFF)</span></a>
+                        <li> <a class="waves-effect waves-dark" href="{{ url('/dashboard/producoes') }}"><i class="mdi mdi-book-open-page-variant"></i><span class="hide-menu">Produções científicas</span></a>
                         </li>
 
                         <li> <a class="waves-effect waves-dark" href="{{ url('/dashboard/cargos') }}"><i class="mdi mdi-worker"></i><span class="hide-menu">Cargos</span></a>

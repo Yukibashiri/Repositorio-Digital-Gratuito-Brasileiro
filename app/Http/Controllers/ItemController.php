@@ -19,6 +19,21 @@ use PHPUnit\Framework\ExpectationFailedException;
 
 class ItemController extends Controller
 {
+
+    protected $title = 'Produção Científica';
+    protected $form = 'livro';
+    protected $controller = 'ItemController';
+    protected $title_create = 'Nova Produção Científica';
+    protected $title_edit = 'Editar Produção Científica';
+    protected $title_show = 'Detalhes da Produção Científica';
+    protected $plural_name = 'Produções Científicas';
+    protected $route = 'dashboard/producoes';
+    protected $fields_name = array('Coleção', 'Situação', 'Titulo','Subtitulo','Curso/Área','Disciplina/Especifíca');
+    protected $fields = array('colecao_id', 'situacao_id', 'titulo','subtitulo', 'curso_id','disciplina_id');
+    protected $crud_off = true;
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -26,12 +41,23 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $colecoes = Colecao::all();
-        $papeis = Papel::all();
-        $cursos = Curso::all();
-        $disciplinas = Disciplina::all();
-
-        return view('crud.forms.livro',array('colecoes' => $colecoes,'cursos' => $cursos, 'papeis' => $papeis, 'disciplinas' => $disciplinas));
+        $itens = DB::table('item')
+            ->join('colecao','item.colecao_id','=','colecao.id')
+            ->join('curso','item.curso_id','=','curso.id')
+            ->join('disciplina','item.disciplina_id','=','disciplina.id')
+            ->join('situacao','item.situacao_id','=','situacao.id')
+            ->selectRaw(" item.id as 'id', colecao.nome as 'colecao_id', titulo, subtitulo, curso.nome as 'curso_id', disciplina.nome as 'disciplina_id', situacao.nome as 'situacao_id' ")
+            ->orderBy('item.id','desc')
+            ->get();
+        return view('crud.index',array('title' => $this->title,
+            'route_path' => $this->route,
+            'controller' => $this->controller,
+            'fields' => $this->fields,
+            'fields_name' => $this->fields_name,
+            'crud_name' => $this->plural_name,
+            'crud_off' => $this->crud_off,
+            'form' => $this->form,
+            'itens' => $itens));
     }
 
     /**
@@ -90,9 +116,9 @@ class ItemController extends Controller
             'resumo' => 'required|min:50',
             'arquivo' => 'required|file',
             'title' => 'min:2']);
-        //dd($request);
-        DB::beginTransaction();
+        
         try{
+        DB::beginTransaction();
 
             $item = new Item();
             $item->colecao_id = $request->input('colecao_id');
@@ -101,7 +127,6 @@ class ItemController extends Controller
                 $item->subtitulo =  $request->input('subtitle');
             $item->resumo = $request->input('resumo');
 
-            
             $item->curso_id = $request->input('curso_id');
              if($request->filled('disciplina_id')  )
                 $item->disciplina_id = $request->input('disciplina_id');
@@ -162,9 +187,7 @@ class ItemController extends Controller
             }
             $tags_enviadas = explode(",",$request->input('tags'));
             foreach($tags_enviadas as $tag){
-
-                if(!Tags::findOrFail($tag)){
-                    
+                if((Tags::find($tag) == null)){
                     $new_tag = new Tags();
                     $new_tag->texto = $tag;
                     $new_tag->created_at = now();
@@ -173,7 +196,7 @@ class ItemController extends Controller
                         return redirect('compartilhar')->with('tipo','danger')->with('mensagem','Houve um erro no registro na inserção das novas palavras chaves!');
                     }
                     $tag = $new_tag->id;
-                }   
+                }  
 
                 $tag_item = new ItemTags();
                 $tag_item->item_id = $item->id;

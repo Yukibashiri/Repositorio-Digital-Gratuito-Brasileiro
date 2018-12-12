@@ -134,8 +134,8 @@
                 @endif
             @else
                 <a href="{{ url('/dashboard') }}" class="text-color">Dashboard</a>
-                <a href="{{ url('/compartilhar') }}" class="text-color">Form Item</a>
-                <a href="{{ route('login') }}" class="text-color">Login</a>
+                <a href="{{ url('/compartilhar') }}" class="text-color">Cadastrar Produção</a>
+                <a href="{{ route('login') }}" class="text-color">Entrar</a>
                 <a href="{{ route('registrar') }}" class="text-color">Cadastrar</a>
             @endauth
         </div>

@@ -3,7 +3,11 @@
 @section('title',$title)
 
 @section('button_create')
-    <button type="button" class="btn btn-info d-none d-lg-block m-l-15" onclick="window.location.href='{{URL::to($route_path)}}/create'"><i class="fa fa-plus-circle" ></i> Criar Novo</button>
+    
+    @if( !isset($crud_off) )
+        <button type="button" class="btn btn-info d-none d-lg-block m-l-15" onclick="window.location.href='{{URL::to($route_path)}}/create'"><i class="fa fa-plus-circle" ></i> Criar Novo</button>
+    @endif
+
 @stop
 @section ('content')
 

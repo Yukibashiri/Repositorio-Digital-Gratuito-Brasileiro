@@ -89,7 +89,6 @@
             setAuthor (index, query) {
                 //this.$refs.authors[index] = query; 
                 //users[index] = query;
-                console.log(query);
                 this.authors[index] = query;
             },
 

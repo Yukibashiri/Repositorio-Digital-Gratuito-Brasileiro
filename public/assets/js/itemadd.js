@@ -31,7 +31,7 @@ $(document).ready(function(){
             "roles[]": { required: true },
             "tags[]": { required: true },
             "authors[]": { required: true },
-            item_file: { required: true, file: true },
+            arquivo: { required: true },
             resumo: { required: true, number: false, minlength: 50 },
             title: { required: true, number: false, minlength: 2 },
         },
@@ -41,10 +41,9 @@ $(document).ready(function(){
             "roles[]": "Informe o papel da pessoa",
             "tags[]": "Informe algumsa palavras-chaves",
             "authors[]": "Informe o nome dos participantes",
-            file: "Anesxe o arquivo do seu trabalho",
             title: "Informe o titulo do trabalho",
             resumo: "Cole aqui o resumo do seu trabalho",
-            item_file: "Insira o arquivo do seu trabalho"
+            arquivo: "Insira o arquivo do seu trabalho"
         }
 	});
 

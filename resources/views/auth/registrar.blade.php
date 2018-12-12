@@ -117,4 +117,5 @@
 
 @section('script')
     <script src="{!! asset('assets/js/useradd.js') !!}"></script>
+    <script src="{!! asset('assets/js/wizard/jquery.validate.min.js') !!}"></script>
 @stop
